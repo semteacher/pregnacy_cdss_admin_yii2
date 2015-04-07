@@ -34,11 +34,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'symp_name',
             [
             'attribute' => 'is_multi',
-            'format' => 'boolean'
+            'format' => 'boolean',
+            'filter'=>array("0"=>"No","1"=>"Yes"),
             ],              
             [
             'attribute' => 'is_selected',
-            'format' => 'boolean'
+            'format' => 'boolean',
+            'filter'=>array("0"=>"No","1"=>"Yes"),
             ],           
             'symp_notes',
             'id_order',
