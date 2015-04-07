@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PregnacyCdssSymptOptionsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pregnacy Cdss Sympt Options';
+$this->title = 'Pregnacy CDSS Symptom Options';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pregnacy-cdss-sympt-options-index">
@@ -16,21 +16,27 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Pregnacy Cdss Sympt Options', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Pregnacy CDSS Sympt Options', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'id_symptom',
+            //'id_symptom',
+            [
+            'attribute' => 'symptom.symp_name'           
+            ],            
             'opt_name',
+            [
+            'attribute' => 'is_selected',
+            'format' => 'boolean',
+            'filter'=>array("0"=>"No","1"=>"Yes"),
+            ], 
             'id_order',
-            'is_selected',
-
+            
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

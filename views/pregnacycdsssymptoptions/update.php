@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\PregnacyCdssSymptOptions */
 
-$this->title = 'Update Pregnacy Cdss Sympt Options: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Pregnacy Cdss Sympt Options', 'url' => ['index']];
+$this->title = 'Update Pregnacy CDSS Symptom Options: ' . ' ' . $model->opt_name;
+$this->params['breadcrumbs'][] = ['label' => 'Pregnacy CDSS Symptom Options', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

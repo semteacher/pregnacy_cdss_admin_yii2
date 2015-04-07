@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\PregnacyCdssSymptOptions */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Pregnacy Cdss Sympt Options', 'url' => ['index']];
+$this->title = $model->opt_name;
+$this->params['breadcrumbs'][] = ['label' => 'Pregnacy CDSS Symptom Options', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pregnacy-cdss-sympt-options-view">
@@ -29,10 +29,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'id_symptom',
+            //'id_symptom',
+            [
+            'attribute' => 'symptom.symp_name'
+            ],            
             'opt_name',
             'id_order',
-            'is_selected',
+            [
+            'attribute' => 'is_selected',
+            'format' => 'boolean'
+            ],
         ],
     ]) ?>
 

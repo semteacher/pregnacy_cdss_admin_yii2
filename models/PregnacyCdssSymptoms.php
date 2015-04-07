@@ -15,8 +15,8 @@ use Yii;
  * @property integer $is_multi
  * @property integer $is_selected
  *
- * @property FormPregnacycdssSymptOptions[] $formPregnacycdssSymptOptions
- * @property FormPregnacycdssSymptCategory $idCategory
+ * @property PregnacyCdssSymptOptions[] $pregnacyCdssSymptOptions
+ * @property PregnacyCdssSymptCategory $symptCategory
  */
 class PregnacyCdssSymptoms extends \yii\db\ActiveRecord
 {
@@ -59,9 +59,9 @@ class PregnacyCdssSymptoms extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFormPregnacycdssSymptOptions()
+    public function getPregnacyCdssSymptOptions()
     {
-        return $this->hasMany(FormPregnacycdssSymptOptions::className(), ['id_symptom' => 'id']);
+        return $this->hasMany(PregnacyCdssSymptOptions::className(), ['id_symptom' => 'id']);
     }
 
     /**

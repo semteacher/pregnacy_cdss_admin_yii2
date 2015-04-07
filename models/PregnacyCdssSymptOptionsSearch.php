@@ -12,6 +12,12 @@ use app\models\PregnacyCdssSymptOptions;
  */
 class PregnacyCdssSymptOptionsSearch extends PregnacyCdssSymptOptions
 {
+    public function attributes()
+    {
+    // add related fields to searchable attributes
+    return array_merge(parent::attributes(), ['symptom.symp_name']);
+    }
+    
     /**
      * @inheritdoc
      */
@@ -19,7 +25,7 @@ class PregnacyCdssSymptOptionsSearch extends PregnacyCdssSymptOptions
     {
         return [
             [['id', 'id_symptom', 'id_order', 'is_selected'], 'integer'],
-            [['opt_name'], 'safe'],
+            [['opt_name', 'symptom.symp_name'], 'safe'],
         ];
     }
 
@@ -47,6 +53,16 @@ class PregnacyCdssSymptOptionsSearch extends PregnacyCdssSymptOptions
             'query' => $query,
         ]);
 
+        // join with relation `symptCategory` that is a relation to the table `form_pregnacycdss_sympt_category`
+        // and set the table alias to be `symptCategory` (upd: table name get from model class by method)
+        $query->joinWith(['symptom' => function($query) { $query->from(['symptom' => PregnacyCdssSymptoms::tableName()]); }]);
+        
+        // enable sorting for the related column
+        $dataProvider->sort->attributes['symptom.symp_name'] = [
+            'asc' => ['symptom.symp_name' => SORT_ASC],
+            'desc' => ['symptom.symp_name' => SORT_DESC],
+        ];
+        
         $this->load($params);
 
         if (!$this->validate()) {
@@ -54,7 +70,7 @@ class PregnacyCdssSymptOptionsSearch extends PregnacyCdssSymptOptions
             // $query->where('0=1');
             return $dataProvider;
         }
-
+                
         $query->andFilterWhere([
             'id' => $this->id,
             'id_symptom' => $this->id_symptom,
@@ -62,6 +78,8 @@ class PregnacyCdssSymptOptionsSearch extends PregnacyCdssSymptOptions
             'is_selected' => $this->is_selected,
         ]);
 
+        $query->andFilterWhere(['like', 'symptom.symp_name', $this->getAttribute('symptom.symp_name')]);
+        
         $query->andFilterWhere(['like', 'opt_name', $this->opt_name]);
 
         return $dataProvider;

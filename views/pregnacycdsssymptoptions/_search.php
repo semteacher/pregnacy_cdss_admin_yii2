@@ -17,7 +17,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'id_symptom') ?>
+    <?//= $form->field($model, 'id_symptom') ?>
+    
+    <?= $form->field($model, 'symptom.symp_name') ?>
 
     <?= $form->field($model, 'opt_name') ?>
 
