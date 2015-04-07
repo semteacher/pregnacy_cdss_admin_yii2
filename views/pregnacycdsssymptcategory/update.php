@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\PregnacyCdssSymptCategory */
 
-$this->title = 'Update Pregnacy Cdss Sympt Category: ' . ' ' . $model->cat_name;
-$this->params['breadcrumbs'][] = ['label' => 'Pregnacy Cdss Sympt Categories', 'url' => ['index']];
+$this->title = 'Update Pregnacy CDSS Sympt Category: ' . ' ' . $model->cat_name;
+$this->params['breadcrumbs'][] = ['label' => 'Pregnacy CDSS Symptom Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

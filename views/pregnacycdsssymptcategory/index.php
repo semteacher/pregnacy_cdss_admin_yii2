@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PregnacyCdssSymptCategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pregnacy Cdss Sympt Categories';
+$this->title = 'Pregnacy CDSS Symptom Categories';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pregnacy-cdss-sympt-category-index">
@@ -16,14 +16,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Pregnacy Cdss Sympt Category', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Pregnacy Cdss Symptom Category', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'cat_name',

@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\PregnacyCdssSymptCategory */
 
-$this->title = $model->cat_name;
-$this->params['breadcrumbs'][] = ['label' => 'Pregnacy Cdss Sympt Categories', 'url' => ['index']];
+$this->title = 'Pregnacy CDSS Symptom Category: '.$model->cat_name;
+$this->params['breadcrumbs'][] = ['label' => 'Pregnacy CDSS Symptom Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pregnacy-cdss-sympt-category-view">

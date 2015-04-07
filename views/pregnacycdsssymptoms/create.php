@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\PregnacyCdssSymptoms */
 
-$this->title = 'Create Pregnacy Cdss Symptoms';
-$this->params['breadcrumbs'][] = ['label' => 'Pregnacy Cdss Symptoms', 'url' => ['index']];
+$this->title = 'Create Pregnacy CDSS Symptom';
+$this->params['breadcrumbs'][] = ['label' => 'Pregnacy CDSS Symptoms', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pregnacy-cdss-symptoms-create">
