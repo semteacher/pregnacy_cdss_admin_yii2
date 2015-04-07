@@ -12,17 +12,17 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'id_category')->textInput() ?>
+    
     <?= $form->field($model, 'symp_name')->textInput(['maxlength' => 50]) ?>
 
     <?= $form->field($model, 'symp_notes')->textInput(['maxlength' => 100]) ?>
 
-    <?= $form->field($model, 'id_order')->textInput() ?>
+    <?= $form->field($model, 'is_multi')->checkbox() ?>
 
-    <?= $form->field($model, 'id_category')->textInput() ?>
-
-    <?= $form->field($model, 'is_multi')->textInput() ?>
-
-    <?= $form->field($model, 'is_selected')->textInput() ?>
+    <?= $form->field($model, 'is_selected')->checkbox() ?>
+    
+    <?= $form->field($model, 'id_order')->textInput() ?>    
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

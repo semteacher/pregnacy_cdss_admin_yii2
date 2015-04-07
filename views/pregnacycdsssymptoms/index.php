@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PregnacyCdssSymptomsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pregnacy Cdss Symptoms';
+$this->title = 'Pregnacy CDSS Symptoms';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pregnacy-cdss-symptoms-index">

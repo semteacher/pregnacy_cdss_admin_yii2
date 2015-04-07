@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\PregnacyCdssSymptoms */
 
-$this->title = $model->id;
+$this->title = $model->symp_name;
 $this->params['breadcrumbs'][] = ['label' => 'Pregnacy Cdss Symptoms', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -29,12 +29,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
+            'id_category',            
             'symp_name',
             'symp_notes',
+            [
+            'attribute' => 'is_multi',
+            'format' => 'boolean'
+            ],            
+            [
+            'attribute' => 'is_selected',
+            'format' => 'boolean'
+            ],
             'id_order',
-            'id_category',
-            'is_multi',
-            'is_selected',
         ],
     ]) ?>
 
