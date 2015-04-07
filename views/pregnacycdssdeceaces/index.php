@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PregnacyCdssDeceacesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pregnacy Cdss Deceaces';
+$this->title = 'Pregnacy CDSS Deceaces';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pregnacy-cdss-deceaces-index">
@@ -16,14 +16,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Pregnacy Cdss Deceaces', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Pregnacy CDSS Deceaces', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'dec_name',
