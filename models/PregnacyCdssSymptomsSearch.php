@@ -81,6 +81,8 @@ class PregnacyCdssSymptomsSearch extends PregnacyCdssSymptoms
             'is_selected' => $this->is_selected,
         ]);
 
+        $query->andFilterWhere(['like', 'symptCategory.cat_name', $this->getAttribute('symptCategory.cat_name')]);
+        
         $query->andFilterWhere(['like', 'symp_name', $this->symp_name])
             ->andFilterWhere(['like', 'symp_notes', $this->symp_notes]);
 
