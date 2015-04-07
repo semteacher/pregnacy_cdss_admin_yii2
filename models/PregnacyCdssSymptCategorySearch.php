@@ -57,7 +57,7 @@ class PregnacyCdssSymptCategorySearch extends PregnacyCdssSymptCategory
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'is_selected' => $this->is_selected,
+            self::tableName() . '.is_selected' => $this->is_selected,
         ]);
 
         $query->andFilterWhere(['like', 'cat_name', $this->cat_name])
