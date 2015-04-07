@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\PregnacyCdssDeceaces */
 
-$this->title = 'Pregnacy CDSS Deceace: '.$model->dec_name;
+$this->title = $model->dec_name;
 $this->params['breadcrumbs'][] = ['label' => 'Pregnacy CDSS Deceaces', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
