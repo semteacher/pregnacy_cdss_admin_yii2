@@ -12,6 +12,14 @@ use app\models\PregnacyCdssSymptoms;
  */
 class PregnacyCdssSymptomsSearch extends PregnacyCdssSymptoms
 {
+    //public $symptCategory;
+    
+    public function attributes()
+    {
+    // add related fields to searchable attributes
+    return array_merge(parent::attributes(), ['symptCategory.cat_name']);
+    }
+    
     /**
      * @inheritdoc
      */
@@ -19,7 +27,7 @@ class PregnacyCdssSymptomsSearch extends PregnacyCdssSymptoms
     {
         return [
             [['id', 'id_order', 'id_category', 'is_multi', 'is_selected'], 'integer'],
-            [['symp_name', 'symp_notes'], 'safe'],
+            [['symp_name', 'symp_notes', 'symptCategory.cat_name'], 'safe'],
         ];
     }
 
@@ -42,10 +50,20 @@ class PregnacyCdssSymptomsSearch extends PregnacyCdssSymptoms
     public function search($params)
     {
         $query = PregnacyCdssSymptoms::find();
-
+        
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        // join with relation `symptCategory` that is a relation to the table `form_pregnacycdss_sympt_category`
+        // and set the table alias to be `symptCategory` (upd: table name get from model class by method)
+        $query->joinWith(['symptCategory' => function($query) { $query->from(['symptCategory' => PregnacyCdssSymptCategory::tableName()]); }]);
+        
+        // enable sorting for the related column
+        $dataProvider->sort->attributes['symptCategory.cat_name'] = [
+            'asc' => ['symptCategory.cat_name' => SORT_ASC],
+            'desc' => ['symptCategory.cat_name' => SORT_DESC],
+        ];
 
         $this->load($params);
 

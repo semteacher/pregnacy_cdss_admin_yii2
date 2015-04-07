@@ -16,6 +16,8 @@ use yii\widgets\ActiveForm;
     ]); ?>
 
     <?= $form->field($model, 'id') ?>
+    
+    <?= $form->field($model, 'symptCategory.cat_name') ?>
 
     <?= $form->field($model, 'symp_name') ?>
 
