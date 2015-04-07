@@ -23,12 +23,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            //['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'id_category',            
+            //'id_category',
+            [
+            'attribute' => 'symptCategory.cat_name'
+            ],
             'symp_name',
-            //'is_multi',
             [
             'attribute' => 'is_multi',
             'format' => 'boolean'

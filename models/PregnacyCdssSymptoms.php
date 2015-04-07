@@ -67,8 +67,8 @@ class PregnacyCdssSymptoms extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdCategory()
+    public function getSymptCategory()
     {
-        return $this->hasOne(FormPregnacycdssSymptCategory::className(), ['id' => 'id_category']);
+        return $this->hasOne(PregnacyCdssSymptCategory::className(), ['id' => 'id_category']);
     }
 }
