@@ -1,6 +1,6 @@
 <?php
 /* @var $this yii\web\View */
-$this->title = 'My Yii Application';
+$this->title = 'Pregnacy CDSS : Administration';
 ?>
 <div class="site-index">
 

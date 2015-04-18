@@ -62,10 +62,12 @@ class SiteController extends Controller
         //if (!\Yii::$app->user->isGuest) {
         if ($_GET['authUser']=='admin'){
             $session['openEMRauthUser'] = $_GET['authUser'];
+            $this->setAppName();
             return $this->render('index');
             //return $this->actionDeceaces();
         } else {
             if ($session['openEMRauthUser']=='admin'){
+                $this->setAppName();
                 return $this->render('index');
             } else {
                 //return $this->render('index');
@@ -119,5 +121,18 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function setAppName()
+    {
+        //check session
+        $session = Yii::$app->session;
+        if ($session->isActive) {
+            $facility = Yii::$app->db->createCommand('SELECT facility FROM users WHERE username="'.$session['openEMRauthUser'].'"')->queryOne();
+            print_r($facility);
+            Yii::$app->name = $facility['facility'];
+        } else {
+            Yii::$app->name = 'empty';
+        }
     }
 }
