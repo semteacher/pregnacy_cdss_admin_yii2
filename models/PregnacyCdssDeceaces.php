@@ -43,7 +43,7 @@ class PregnacyCdssDeceaces extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'dec_name' => 'Dec Name',
+            'dec_name' => 'Decease Name',
             'dec_note' => 'Dec Note',
             'p' => 'P',
         ];

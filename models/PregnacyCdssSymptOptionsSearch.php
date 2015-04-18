@@ -53,7 +53,7 @@ class PregnacyCdssSymptOptionsSearch extends PregnacyCdssSymptOptions
             'query' => $query,
         ]);
 
-        // join with relation `symptCategory` that is a relation to the table `form_pregnacycdss_sympt_category`
+        // join with relation `symptom` that is a relation to the table `form_pregnacycdss_symptom`
         // and set the table alias to be `symptCategory` (upd: table name get from model class by method)
         $query->joinWith(['symptom' => function($query) { $query->from(['symptom' => PregnacyCdssSymptoms::tableName()]); }]);
         

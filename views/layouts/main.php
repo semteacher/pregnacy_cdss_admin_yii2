@@ -37,10 +37,11 @@ AppAsset::register($this);
                 'items' => [
                     ['label' => 'Home', 'url' => ['/site/index']],
                     //['label' => 'About', 'url' => ['/site/about']],
-                    ['label' => 'Deceasses', 'url' => ['/pregnacycdssdeceaces/index']],
+                    ['label' => 'Deceases', 'url' => ['/pregnacycdssdeceaces/index']],
                     ['label' => 'Symptom Groups', 'url' => ['/pregnacycdsssymptcategory/index']],
                     ['label' => 'Symptoms', 'url' => ['/pregnacycdsssymptoms/index']],
                     ['label' => 'Symptom Options', 'url' => ['/pregnacycdsssymptoptions/index']],
+                    ['label' => 'Deceases per Symptom Options', 'url' => ['/pregnacycdssdeceasessymptopt/index']],
                     //['label' => 'Contact', 'url' => ['/site/contact']],
                     //Yii::$app->user->isGuest ?
                     //    ['label' => 'Login', 'url' => ['/site/login']] :

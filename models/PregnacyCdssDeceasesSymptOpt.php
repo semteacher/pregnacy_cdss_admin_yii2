@@ -13,8 +13,8 @@ use Yii;
  * @property double $py
  * @property double $pn
  *
- * @property FormPregnacycdssDeceaces $idDeceaces
- * @property FormPregnacycdssSymptOptions $idSymptOpt
+ * @property PregnacycdssDeceaces $deceaces
+ * @property PregnacycdssSymptOptions $symptOpt
  */
 class PregnacyCdssDeceasesSymptOpt extends \yii\db\ActiveRecord
 {
@@ -54,16 +54,16 @@ class PregnacyCdssDeceasesSymptOpt extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdDeceaces()
+    public function getDeceaces()
     {
-        return $this->hasOne(FormPregnacycdssDeceaces::className(), ['id' => 'id_deceaces']);
+        return $this->hasOne(PregnacyCdssDeceaces::className(), ['id' => 'id_deceaces']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdSymptOpt()
+    public function getSymptOpt()
     {
-        return $this->hasOne(FormPregnacycdssSymptOptions::className(), ['id' => 'id_sympt_opt']);
+        return $this->hasOne(PregnacyCdssSymptOptions::className(), ['id' => 'id_sympt_opt']);
     }
 }
