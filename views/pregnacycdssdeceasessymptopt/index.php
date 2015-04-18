@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper; // load classes
+use app\models\PregnacyCdssDeceaces;
+use app\models\PregnacyCdssDeceacesSearch;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PregnacyCdssDeceasesSymptOptSearch */
@@ -9,6 +12,8 @@ use yii\grid\GridView;
 
 $this->title = 'Pregnacy Cdss: Deceases by Symptom Option';
 $this->params['breadcrumbs'][] = $this->title;
+
+$dataList_decease=ArrayHelper::map(PregnacyCdssDeceaces::find()->asArray()->all(), 'id', 'dec_name');
 ?>
 <div class="pregnacy-cdss-deceases-sympt-opt-index">
 
@@ -25,12 +30,29 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             'id',
             //'id_deceaces',
-            [
-                'attribute' => 'deceaces.dec_name'
-            ],
+           // [
+           //     'attribute' => 'deceaces.dec_name'
+           // ],
             //'id_sympt_opt',
             [
+                //'attribute' => 'symptOpt.symptom.symp_name'
+                //'attribute' => 'symptOpt.id_symptom',
+                'attribute' => 'id_deceaces',
+                'label'=>'Decease Name',
+                'format'=>'text',
+                'filter'=>$dataList_decease,
+                'value'=>'deceaces.dec_name'
+            ],
+            [
                 'attribute' => 'symptOpt.symptom.symp_name'
+                //'attribute' => 'symptOpt.id_symptom',
+           //     'attribute' => 'id_deceaces',
+           //     'label'=>'Decease Name2',
+           //     'format'=>'text',
+           //     'filter'=>PregnacyCdssDeceacesSearch::get_allDeceases(),
+           //     'content'=>function($data){
+           //         return $data->getDeceacesName();
+           //     }
             ],
             [
                 'attribute' => 'symptOpt.opt_name'

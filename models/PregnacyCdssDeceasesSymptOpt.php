@@ -58,6 +58,11 @@ class PregnacyCdssDeceasesSymptOpt extends \yii\db\ActiveRecord
     {
         return $this->hasOne(PregnacyCdssDeceaces::className(), ['id' => 'id_deceaces']);
     }
+    public function getDeceacesName()
+    {
+        $model=$this->deceaces;
+        return $model?$model->dec_name:'';
+	}
 
     /**
      * @return \yii\db\ActiveQuery

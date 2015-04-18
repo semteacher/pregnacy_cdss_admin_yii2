@@ -15,7 +15,7 @@ class PregnacyCdssDeceasesSymptOptSearch extends PregnacyCdssDeceasesSymptOpt
     public function attributes()
     {
         // add related fields to searchable attributes
-        return array_merge(parent::attributes(), ['deceaces.dec_name', 'symptOpt.opt_name', 'symptOpt.symptom.symp_name']);
+        return array_merge(parent::attributes(), ['deceaces.dec_name', 'symptOpt.opt_name', 'symptOpt.id_symptom', 'symptOpt.symptom.symp_name']);
     }
 
     /**
@@ -26,7 +26,7 @@ class PregnacyCdssDeceasesSymptOptSearch extends PregnacyCdssDeceasesSymptOpt
         return [
             [['id', 'id_deceaces', 'id_sympt_opt'], 'integer'],
             [['py', 'pn'], 'number'],
-            [['deceaces.dec_name', 'symptOpt.opt_name', 'symptOpt.symptom.symp_name'], 'safe'],
+            [['deceaces.dec_name', 'symptOpt.opt_name', 'symptOpt.id_symptom', 'symptOpt.symptom.symp_name'], 'safe'],
         ];
     }
 
@@ -56,13 +56,13 @@ class PregnacyCdssDeceasesSymptOptSearch extends PregnacyCdssDeceasesSymptOpt
 
         // join with relation `Deceaces` that is a relation to the table `form_pregnacycdss_deceaces`
         // and set the table alias to be `Deceaces` (upd: table name get from model class by method)
-        $query->joinWith(['deceaces' => function($query) { $query->from(['deceaces' => PregnacyCdssDeceaces::tableName()]); }]);
+    //    $query->joinWith(['deceaces' => function($query) { $query->from(['deceaces' => PregnacyCdssDeceaces::tableName()]); }]);
 
         // enable sorting for the related column
-        $dataProvider->sort->attributes['deceaces.dec_name'] = [
-            'asc' => ['deceaces.dec_name' => SORT_ASC],
-            'desc' => ['deceaces.dec_name' => SORT_DESC],
-        ];
+    //    $dataProvider->sort->attributes['deceaces.dec_name'] = [
+    //        'asc' => ['deceaces.dec_name' => SORT_ASC],
+    //        'desc' => ['deceaces.dec_name' => SORT_DESC],
+    //    ];
 
         // join with relation `symptOpt` that is a relation to the table `form_pregnacycdss_sympt_opt`
         // and set the table alias to be `Deceaces` (upd: table name get from model class by method)
