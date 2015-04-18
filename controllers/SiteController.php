@@ -5,7 +5,9 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\Session;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
@@ -49,7 +51,27 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        //check session
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            // open a session if need
+            $session->open();
+        }
+
+        //TODO:require to implement the User model based on the OpenEMR 'user' table
+        //if (!\Yii::$app->user->isGuest) {
+        if ($_GET['authUser']=='admin'){
+            $session['openEMRauthUser'] = $_GET['authUser'];
+            return $this->render('index');
+            //return $this->actionDeceaces();
+        } else {
+            if ($session['openEMRauthUser']=='admin'){
+                return $this->render('index');
+            } else {
+                //return $this->render('index');
+                return $this->actionLogin();
+            }
+        }
     }
 
     public function actionLogin()
@@ -87,6 +109,11 @@ class SiteController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionDeceaces()
+    {
+        return $this->redirect(Url::to(['/pregnacycdssdeceaces/index']));
     }
 
     public function actionAbout()
