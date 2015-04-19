@@ -24,9 +24,9 @@ class PregnacyCdssDeceasesSymptOptSearch extends PregnacyCdssDeceasesSymptOpt
     public function rules()
     {
         return [
-            [['id', 'id_deceaces', 'id_sympt_opt'], 'integer'],
+            [['id', 'id_deceaces', 'id_sympt_opt', 'symptOpt.id_symptom'], 'integer'],
             [['py', 'pn'], 'number'],
-            [['deceaces.dec_name', 'symptOpt.opt_name', 'symptOpt.id_symptom', 'symptOpt.symptom.symp_name'], 'safe'],
+            [['deceaces.dec_name', 'symptOpt.opt_name', 'symptOpt.symptom.symp_name'], 'safe'],
         ];
     }
 
@@ -54,16 +54,6 @@ class PregnacyCdssDeceasesSymptOptSearch extends PregnacyCdssDeceasesSymptOpt
             'query' => $query,
         ]);
 
-        // join with relation `Deceaces` that is a relation to the table `form_pregnacycdss_deceaces`
-        // and set the table alias to be `Deceaces` (upd: table name get from model class by method)
-    //    $query->joinWith(['deceaces' => function($query) { $query->from(['deceaces' => PregnacyCdssDeceaces::tableName()]); }]);
-
-        // enable sorting for the related column
-    //    $dataProvider->sort->attributes['deceaces.dec_name'] = [
-    //        'asc' => ['deceaces.dec_name' => SORT_ASC],
-    //        'desc' => ['deceaces.dec_name' => SORT_DESC],
-    //    ];
-
         // join with relation `symptOpt` that is a relation to the table `form_pregnacycdss_sympt_opt`
         // and set the table alias to be `Deceaces` (upd: table name get from model class by method)
         $query->joinWith(['symptOpt' => function($query) { $query->from(['symptOpt' => PregnacyCdssSymptOptions::tableName()]); }]);
@@ -75,9 +65,9 @@ class PregnacyCdssDeceasesSymptOptSearch extends PregnacyCdssDeceasesSymptOpt
         ];
 
         // enable sorting for the related column
-        //$dataProvider->sort->attributes['symptOpt.symptom.symp_name'] = [
-        //    'asc' => ['symptOpt.symptom.symp_name' => SORT_ASC],
-        //    'desc' => ['symptOpt.symptom.symp_name' => SORT_DESC],
+        //$dataProvider->sort->attributes['symptOpt.id_symptom'] = [
+        //    'asc' => ['symptOpt.id_symptom' => SORT_ASC],
+        //    'desc' => ['symptOpt.id_symptom' => SORT_DESC],
         //];
 
         $this->load($params);
@@ -97,6 +87,8 @@ class PregnacyCdssDeceasesSymptOptSearch extends PregnacyCdssDeceasesSymptOpt
         ]);
 
         $query->andFilterWhere(['like', 'symptOpt.opt_name', $this->getAttribute('symptOpt.opt_name')]);
+
+        $query->andFilterWhere(['=', 'symptOpt.id_symptom', $this->getAttribute('symptOpt.id_symptom')]);
 
         return $dataProvider;
     }
