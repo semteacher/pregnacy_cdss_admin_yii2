@@ -84,4 +84,8 @@ class PregnacyCdssSymptOptionsSearch extends PregnacyCdssSymptOptions
 
         return $dataProvider;
     }
+
+//    public function getSymptomName(){
+//        return $this->symptom.symp_name .'-'.$this->opt_name;
+//    }
 }
