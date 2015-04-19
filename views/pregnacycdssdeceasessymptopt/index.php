@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper; // load classes
 use app\models\PregnacyCdssDeceaces;
-use app\models\PregnacyCdssDeceacesSearch;
+//use app\models\PregnacyCdssDeceacesSearch;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PregnacyCdssDeceasesSymptOptSearch */
@@ -29,14 +29,7 @@ $dataList_decease=ArrayHelper::map(PregnacyCdssDeceaces::find()->asArray()->all(
         'filterModel' => $searchModel,
         'columns' => [
             'id',
-            //'id_deceaces',
-           // [
-           //     'attribute' => 'deceaces.dec_name'
-           // ],
-            //'id_sympt_opt',
             [
-                //'attribute' => 'symptOpt.symptom.symp_name'
-                //'attribute' => 'symptOpt.id_symptom',
                 'attribute' => 'id_deceaces',
                 'label'=>'Decease Name',
                 'format'=>'text',

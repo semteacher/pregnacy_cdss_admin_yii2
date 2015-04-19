@@ -6,7 +6,6 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\PregnacyCdssDeceaces;
-use yii\helpers\ArrayHelper; // load classes
 
 /**
  * PregnacyCdssDeceacesSearch represents the model behind the search form about `app\models\PregnacyCdssDeceaces`.
@@ -66,12 +65,5 @@ class PregnacyCdssDeceacesSearch extends PregnacyCdssDeceaces
             ->andFilterWhere(['like', 'dec_note', $this->dec_note]);
 
         return $dataProvider;
-    }
-
-    public static function get_allDeceases()
-    {
-        $cat = self::find()->all();
-        $cat = ArrayHelper::map($cat, 'id', 'dec_name');
-        return $cat;
     }
 }

@@ -96,8 +96,6 @@ class PregnacyCdssDeceasesSymptOptSearch extends PregnacyCdssDeceasesSymptOpt
             'pn' => $this->pn,
         ]);
 
-        $query->andFilterWhere(['like', 'deceaces.dec_name', $this->getAttribute('deceaces.dec_name')]);
-
         $query->andFilterWhere(['like', 'symptOpt.opt_name', $this->getAttribute('symptOpt.opt_name')]);
 
         return $dataProvider;
