@@ -78,14 +78,10 @@ class PregnacyCdssSymptOptionsSearch extends PregnacyCdssSymptOptions
             self::tableName() . '.is_selected' => $this->is_selected,
         ]);
 
-        $query->andFilterWhere(['like', 'symptom.symp_name', $this->getAttribute('symptom.symp_name')]);
+        //$query->andFilterWhere(['like', 'symptom.symp_name', $this->getAttribute('symptom.symp_name')]);
         
         $query->andFilterWhere(['like', 'opt_name', $this->opt_name]);
 
         return $dataProvider;
     }
-
-//    public function getSymptomName(){
-//        return $this->symptom.symp_name .'-'.$this->opt_name;
-//    }
 }

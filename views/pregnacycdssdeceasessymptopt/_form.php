@@ -4,14 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper; // load classes
 use app\models\PregnacyCdssDeceaces;
-use app\models\PregnacyCdssSymptOptionsSearch;
+use app\models\PregnacyCdssSymptOptions;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\PregnacyCdssDeceasesSymptOpt */
 /* @var $form yii\widgets\ActiveForm */
 $dataList_decease=ArrayHelper::map(PregnacyCdssDeceaces::find()->asArray()->all(), 'id', 'dec_name');
-$dataList_symptopt=ArrayHelper::map(PregnacyCdssSymptOptionsSearch::find()->asArray()->all(), 'id', 'opt_name', 'id_symptom');
-//$dataList_symptopt=ArrayHelper::map(PregnacyCdssSymptOptionsSearch::find()->asArray()->all(), 'id', function(){ return PregnacyCdssSymptOptionsSearch::getSymptomName(); });
+$dataList_symptopt=ArrayHelper::map(PregnacyCdssSymptOptions::find()->with(['symptom'])->asArray()->all(), 'id', 'opt_name', 'symptom.symp_name');
 ?>
 
 <div class="pregnacy-cdss-deceases-sympt-opt-form">
