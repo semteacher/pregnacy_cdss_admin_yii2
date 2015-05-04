@@ -19,7 +19,7 @@ class PregnancyCdssDeceacesSearch extends PregnancyCdssDeceaces
     {
         return [
             [['id'], 'integer'],
-            [['dec_name', 'dec_note'], 'safe'],
+            [['dec_name', 'dec_note', 'dec_icd10'], 'safe'],
             [['p'], 'number'],
         ];
     }

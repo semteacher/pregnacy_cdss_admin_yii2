@@ -12,9 +12,11 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'dec_name')->textInput(['maxlength' => 50]) ?>
+    <?= $form->field($model, 'dec_name')->textInput(['maxlength' => 100]) ?>
 
-    <?= $form->field($model, 'dec_note')->textInput(['maxlength' => 100]) ?>
+    <?= $form->field($model, 'dec_note')->textInput(['maxlength' => 255]) ?>
+
+    <?= $form->field($model, 'dec_icd10')->textInput(['maxlength' => 255]) ?>
 
     <?= $form->field($model, 'p')->textInput() ?>
 

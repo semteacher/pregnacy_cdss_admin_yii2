@@ -21,6 +21,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'dec_note') ?>
 
+    <?= $form->field($model, 'dec_icd10') ?>
+
     <?= $form->field($model, 'p') ?>
 
     <div class="form-group">
