@@ -10,7 +10,7 @@ use app\models\PregnancyCdssSymptoms;
 /* @var $searchModel app\models\PregnancyCdssDeceasesSymptOptSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pregnancy Cdss: Deceases by Symptom Option';
+$this->title = 'Pregnancy CDSS: Deceases by Symptom Option';
 $this->params['breadcrumbs'][] = $this->title;
 
 $dataList_decease=ArrayHelper::map(PregnancyCdssDeceaces::find()->asArray()->all(), 'id', 'dec_name');
@@ -22,7 +22,7 @@ $dataList_symptom=ArrayHelper::map(PregnancyCdssSymptoms::find()->asArray()->all
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Pregnancy Cdss: Deceases by Symptom Option', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Pregnancy CDSS Deceases by Symptom Option', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

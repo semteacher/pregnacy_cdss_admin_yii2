@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\PregnancyCdssDeceasesSymptOpt */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Pregnancy Cdss: Deceases by Symptom Option', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Pregnancy CDSS: Deceases by Symptom Option', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pregnancy-cdss-deceases-sympt-opt-view">
