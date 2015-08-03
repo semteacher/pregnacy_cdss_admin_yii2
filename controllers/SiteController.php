@@ -60,20 +60,28 @@ class SiteController extends Controller
 
         //TODO:require to implement the User model based on the OpenEMR 'user' table
         //if (!\Yii::$app->user->isGuest) {
-        if ($_GET['authUser']=='admin'){
-            $session['openEMRauthUser'] = $_GET['authUser'];
-            $this->setAppName();
-            return $this->render('index');
-            //return $this->actionDeceaces();
-        } else {
-            if ($session['openEMRauthUser']=='admin'){
+        $openemr_user = '';
+        $session_user = '';
+        if (isset($_GET['authUser'])){
+            $openemr_user = $_GET['authUser'];
+        }
+        if (isset($session['openEMRauthUser'])){
+            $session_user = $session['openEMRauthUser'];
+        }
+        
+        if ($openemr_user=='admin'){
+                $session['openEMRauthUser'] = $openemr_user;
+                $this->setAppName();
+                return $this->render('index');
+                //return PregnancyCdssDeceacesController::actionIndex();
+                //return PregnancyCdssDeceacesController->render('index');
+        } elseif ($session_user=='admin'){
                 $this->setAppName();
                 return $this->render('index');
             } else {
                 //return $this->render('index');
                 return $this->actionLogin();
-            }
-        }
+            }  
     }
 
     public function actionLogin()
