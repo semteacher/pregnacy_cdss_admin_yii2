@@ -5,6 +5,8 @@ namespace app\controllers;
 use Yii;
 use app\models\PregnancyCdssPatientExam;
 use app\models\PregnancyCdssPatientExamSearch;
+use app\models\PregnancyCdssSymptomsSearch;
+use app\models\PregnancyCdssSymptoptByPatient;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -117,5 +119,44 @@ class PregnancyCdssPatientExamController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    
+    public function actionDecisiontreeeducationsubmit()
+    {
+        $searchModel = new PregnancyCdssPatientExamSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $submitReport = 'Not implemented';
+        
+        $formsDataArray = $searchModel->find()->where(['id_finaldecease'=>'1'])->all();
+        //$formsDataset = PregnancyCdssDeceaces::find()->asArray()->all();
+        
+        $symptomsSearchModel = new PregnancyCdssSymptomsSearch();
+        $symptomsDataArray = $symptomsSearchModel->find()->where(['is_selected'=>'1'])->all();
+        
+        $submitArray = array();
+        foreach ($formsDataArray as $formsDataObj) 
+        {
+            //$submitArray[$formsDataObj->id]=['pid'=>$formsDataObj->pid];
+            //construct row
+            $row = array();
+            $row = array_merge($row, ['exam_id'=>intval($formsDataObj->id), 'patient_id'=>intval($formsDataObj->pid), 'decease'=>$formsDataObj->id_finaldecease]);
+            foreach ($symptomsDataArray as $symptomsDataObj)
+            {
+                $patientChoice = PregnancyCdssSymptoptByPatient::findOne(['id_exam'=>$formsDataObj->id, 'pid'=>$formsDataObj->pid, 'id_symptom'=>$symptomsDataObj->id]);
+                $row = array_merge($row,[$symptomsDataObj->id=>$patientChoice->id_sympt_opt]);
+            }
+            //ad new row to array
+            $submitArray[]= $row;
+            //$submitArray[]=['exam_id'=>intval($formsDataObj->id), 'patient_id'=>intval($formsDataObj->pid), 'decease'=>$formsDataObj->id_finaldecease];
+        }
+        
+        return $this->render('dectreesubmit', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'submitReport' => $submitReport,
+            'formsDataArray' => $formsDataArray,
+            'symptomsDataArray' => $symptomsDataArray,
+            'submitArray' => $submitArray,
+        ]);
     }
 }
