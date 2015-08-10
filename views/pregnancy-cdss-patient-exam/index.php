@@ -20,7 +20,8 @@ $dataList_decease=ArrayHelper::map(PregnancyCdssDeceaces::find()->asArray()->all
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Pregnancy Cdss Patient Exam', ['create'], ['class' => 'btn btn-success']) ?>
+        <?//= Html::a('Create Pregnancy Cdss Patient Exam', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Submit ALL records with existing final decease to GAE Deceases Tree Service as educational sets', ['decisiontreeeducationsubmit'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -70,7 +71,16 @@ $dataList_decease=ArrayHelper::map(PregnancyCdssDeceaces::find()->asArray()->all
             'filter'=>array("0"=>"No","1"=>"Yes"),
             ],
             
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+             'template' => '{view} {dectreechek}',
+             'buttons' => [
+	                'dectreechek' => function ($url,$model) {
+	                    return Html::a(
+                        '<span class="glyphicon glyphicon-user"></span>', 
+                       $url);
+	                },
+                   ],
+            ],
         ],
     ]); ?>
 
