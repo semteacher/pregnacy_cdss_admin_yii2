@@ -12,6 +12,12 @@ use app\models\PregnancyCdssPatientExam;
  */
 class PregnancyCdssPatientExamSearch extends PregnancyCdssPatientExam
 {
+    public function attributes()
+    {
+    // add related fields to searchable attributes
+    return array_merge(parent::attributes(), ['patientData.lname', 'patientData.fullName', 'formsData.deleted']);
+    }
+    
     /**
      * @inheritdoc
      */
@@ -19,7 +25,7 @@ class PregnancyCdssPatientExamSearch extends PregnancyCdssPatientExam
     {
         return [
             [['id', 'pid', 'authorized', 'activity', 'encounter', 'is_firstpregnancy', 'id_finaldecease'], 'integer'],
-            [['date', 'user', 'groupname', 'createuser', 'createdate', 'expect_decease', 'deceases', 'finaldecease', 'finaldecease_icd10'], 'safe'],
+            [['date', 'user', 'groupname', 'createuser', 'createdate', 'expect_decease', 'deceases', 'finaldecease', 'finaldecease_icd10', 'patientData.lname', 'patientData.fullName', 'formsData.deleted'], 'safe'],
         ];
     }
 
@@ -46,7 +52,27 @@ class PregnancyCdssPatientExamSearch extends PregnancyCdssPatientExam
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
+        
+        // join with relation `formsData` that is a relation to the table `forms`
+        // and set the table alias to be `formsData` (upd: table name get from model class by method)
+        //$query->joinWith(['formsData' => function($query) { $query->from(['formsData' => FormsData::tableName()]); }]);
+                
+        // enable sorting for the related column
+        //$dataProvider->sort->attributes['patientData.deleted'] = [
+        //    'asc' => ['formsData.deleted' => SORT_ASC],
+        //    'desc' => ['formsData.deleted' => SORT_DESC],
+        //];
+        
+        // join with relation `patientData` that is a relation to the table `patient_data`
+        // and set the table alias to be `patientData` (upd: table name get from model class by method)
+        $query->joinWith(['patientData' => function($query) { $query->from(['patientData' => PatientData::tableName()]); }]);
+        //$query->joinWith(['patientData']);
+        
+        $dataProvider->sort->attributes['patientData.fullName'] = [
+            'asc' => ['patientData.lname' => SORT_ASC],
+            'desc' => ['patientData.lname' => SORT_DESC],
+        ];
+        
         $this->load($params);
 
         if (!$this->validate()) {
@@ -74,6 +100,8 @@ class PregnancyCdssPatientExamSearch extends PregnancyCdssPatientExam
             ->andFilterWhere(['like', 'deceases', $this->deceases])
             ->andFilterWhere(['like', 'finaldecease', $this->finaldecease])
             ->andFilterWhere(['like', 'finaldecease_icd10', $this->finaldecease_icd10]);
+            
+        $query->andFilterWhere(['like', 'patientData.lname', $this->getAttribute('patientData.fullName')]);
 
         return $dataProvider;
     }

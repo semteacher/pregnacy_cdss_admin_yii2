@@ -28,6 +28,7 @@ use Yii;
  */
 class PregnancyCdssPatientExam extends \yii\db\ActiveRecord
 {
+    public $formName = 'Pregnancy CDSS Form';
     /**
      * @inheritdoc
      */
@@ -65,11 +66,11 @@ class PregnancyCdssPatientExam extends \yii\db\ActiveRecord
             'encounter' => 'Encounter',
             'createuser' => 'Createuser',
             'createdate' => 'Createdate',
-            'is_firstpregnancy' => 'Is Firstpregnancy',
+            'is_firstpregnancy' => 'First Pregnancy',
             'expect_decease' => 'Expect Decease',
             'deceases' => 'Deceases',
             'id_finaldecease' => 'Id Finaldecease',
-            'finaldecease' => 'Finaldecease',
+            'finaldecease' => 'Final Decease',
             'finaldecease_icd10' => 'Finaldecease Icd10',
         ];
     }
@@ -77,8 +78,24 @@ class PregnancyCdssPatientExam extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFormPregnancycdssSymptoptByPatients()
+    public function getPregnancyCdssSymptoptByPatients()
     {
-        return $this->hasMany(FormPregnancycdssSymptoptByPatient::className(), ['id_exam' => 'id']);
+        return $this->hasMany(PregnancyCdssSymptoptByPatient::className(), ['id_exam' => 'id']);
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPatientData()
+    {
+        return $this->hasOne(PatientData::className(), ['pid' => 'pid']);
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFormsData()
+    {
+        return $this->hasOne(FormsData::className(), ['form_id' => 'id','form_name'=>'formName']);
     }
 }
