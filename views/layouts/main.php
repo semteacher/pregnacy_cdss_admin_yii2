@@ -37,6 +37,7 @@ AppAsset::register($this);
                 'items' => [
                     ['label' => 'Home', 'url' => ['/site/index']],
                     //['label' => 'About', 'url' => ['/site/about']],
+                    ['label' => 'Patient Exams', 'url' => ['/pregnancy-cdss-patient-exam/index']],
                     ['label' => 'Deceases', 'url' => ['/pregnancycdssdeceaces/index']],
                     ['label' => 'Symptom Groups', 'url' => ['/pregnancycdsssymptcategory/index']],
                     ['label' => 'Symptoms', 'url' => ['/pregnancycdsssymptoms/index']],
