@@ -96,6 +96,7 @@ class PregnancyCdssPatientExam extends \yii\db\ActiveRecord
      */
     public function getFormsData()
     {
-        return $this->hasOne(FormsData::className(), ['form_id' => 'id','form_name'=>'formName']);
+        return $this->hasOne(FormsData::className(), ['form_id' => 'id']);
+        //return $this->hasOne(FormsData::className(), ['form_id' => 'id','form_name'=>'formName']);
     }
 }

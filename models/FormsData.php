@@ -61,4 +61,10 @@ class FormsData extends \yii\db\ActiveRecord
             'formdir' => 'Formdir',
         ];
     }
+    
+    //override find() method to process only rows which are related to the Pregnancy CDSS Form (non-deleted only) 
+    public static function find()
+    {
+        return parent::find()->where(['form_name' => 'Pregnancy CDSS Form', 'deleted'=>'0']);
+    }
 }

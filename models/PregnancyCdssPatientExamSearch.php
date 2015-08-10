@@ -55,13 +55,13 @@ class PregnancyCdssPatientExamSearch extends PregnancyCdssPatientExam
         
         // join with relation `formsData` that is a relation to the table `forms`
         // and set the table alias to be `formsData` (upd: table name get from model class by method)
-        //$query->joinWith(['formsData' => function($query) { $query->from(['formsData' => FormsData::tableName()]); }]);
+        $query->joinWith(['formsData' => function($query) { $query->from(['formsData' => FormsData::tableName()]); }]);
                 
         // enable sorting for the related column
-        //$dataProvider->sort->attributes['patientData.deleted'] = [
-        //    'asc' => ['formsData.deleted' => SORT_ASC],
-        //    'desc' => ['formsData.deleted' => SORT_DESC],
-        //];
+        $dataProvider->sort->attributes['formsData.deleted'] = [
+            'asc' => ['formsData.deleted' => SORT_ASC],
+            'desc' => ['formsData.deleted' => SORT_DESC],
+        ];
         
         // join with relation `patientData` that is a relation to the table `patient_data`
         // and set the table alias to be `patientData` (upd: table name get from model class by method)
