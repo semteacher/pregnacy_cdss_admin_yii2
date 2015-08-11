@@ -6,10 +6,12 @@ use Yii;
 use app\models\PregnancyCdssPatientExam;
 use app\models\PregnancyCdssPatientExamSearch;
 use app\models\PregnancyCdssSymptomsSearch;
+use app\models\PregnancyCdssSymptOptions;
 use app\models\PregnancyCdssSymptoptByPatient;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
 
 /**
  * PregnancyCdssPatientExamController implements the CRUD actions for PregnancyCdssPatientExam model.
@@ -139,24 +141,37 @@ class PregnancyCdssPatientExamController extends Controller
             //$submitArray[$formsDataObj->id]=['pid'=>$formsDataObj->pid];
             //construct row
             $row = array();
-            $row = array_merge($row, ['exam_id'=>intval($formsDataObj->id), 'patient_id'=>intval($formsDataObj->pid), 'decease'=>$formsDataObj->id_finaldecease]);
+            $client_description = array();
+            $client_decease = array();
+            $client_data = array();
+            
+            $client_description = array_merge($client_description, ['url'=>'http://openemr.tdmu.edu.ua', 'form_name' => 'Pregnancy CDSS Form', 'exam_id'=>intval($formsDataObj->id), 'patient_id'=>intval($formsDataObj->pid)]);
+            $client_decease = array_merge($client_decease, ['decease_id'=>$formsDataObj->id_finaldecease, 'decease_name'=>$formsDataObj->finaldecease]);
+            $row = array_merge($row,['client_description'=>$client_description]);
+            $row = array_merge($row,['client_decease'=>$client_decease]);
+            
             foreach ($symptomsDataArray as $symptomsDataObj)
             {
                 $patientChoice = PregnancyCdssSymptoptByPatient::findOne(['id_exam'=>$formsDataObj->id, 'pid'=>$formsDataObj->pid, 'id_symptom'=>$symptomsDataObj->id]);
-                $row = array_merge($row,[$symptomsDataObj->id=>$patientChoice->id_sympt_opt]);
+                $patientChoiceName = PregnancyCdssSymptOptions::findOne(['id'=>$patientChoice->id_sympt_opt]);
+                $client_data = array_merge($client_data,[$symptomsDataObj->id=>['symp_name'=>$symptomsDataObj->symp_name,'opt_id'=>$patientChoice->id_sympt_opt, 'opt_name'=>$patientChoiceName->opt_name]]);
             }
+            $row = array_merge($row, ['client_data'=>$client_data]);
             //ad new row to array
             $submitArray[]= $row;
             //$submitArray[]=['exam_id'=>intval($formsDataObj->id), 'patient_id'=>intval($formsDataObj->pid), 'decease'=>$formsDataObj->id_finaldecease];
         }
+        //convert to json
+        $submitArrayjson = Json::encode($submitArray);
         
         return $this->render('dectreesubmit', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'submitReport' => $submitReport,
-            'formsDataArray' => $formsDataArray,
-            'symptomsDataArray' => $symptomsDataArray,
+            //'formsDataArray' => $formsDataArray,
+            //'symptomsDataArray' => $symptomsDataArray,
             'submitArray' => $submitArray,
+            'submitArrayjson' => $submitArrayjson,
         ]);
     }
 }
