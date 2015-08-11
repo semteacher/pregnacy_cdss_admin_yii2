@@ -12,6 +12,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
+use linslin\yii2\curl;
 
 /**
  * PregnancyCdssPatientExamController implements the CRUD actions for PregnancyCdssPatientExam model.
@@ -154,7 +155,9 @@ class PregnancyCdssPatientExamController extends Controller
             {
                 $patientChoice = PregnancyCdssSymptoptByPatient::findOne(['id_exam'=>$formsDataObj->id, 'pid'=>$formsDataObj->pid, 'id_symptom'=>$symptomsDataObj->id]);
                 $patientChoiceName = PregnancyCdssSymptOptions::findOne(['id'=>$patientChoice->id_sympt_opt]);
-                $client_data = array_merge($client_data,[$symptomsDataObj->id=>['symp_name'=>$symptomsDataObj->symp_name,'opt_id'=>$patientChoice->id_sympt_opt, 'opt_name'=>$patientChoiceName->opt_name]]);
+                //var_dump($symptomsDataObj->id);
+                //TODO: bug! $symptomsDataObj->id did not produce key of array?????
+                $client_data = array_merge($client_data,[$symptomsDataObj->id=>['symp_id'=>$symptomsDataObj->id,'symp_name'=>$symptomsDataObj->symp_name,'opt_id'=>$patientChoice->id_sympt_opt, 'opt_name'=>$patientChoiceName->opt_name]]);
             }
             $row = array_merge($row, ['client_data'=>$client_data]);
             //ad new row to array
@@ -163,7 +166,19 @@ class PregnancyCdssPatientExamController extends Controller
         }
         //convert to json
         $submitArrayjson = Json::encode($submitArray);
-        
+        $subarrcount = count($submitArray);
+        $subarrsize = sizeof($submitArray);
+        //Init curl
+        $curl = new curl\Curl();
+        //post http://contactmgr.loc/
+        $submitReport = $curl->setOption(
+                CURLOPT_POSTFIELDS, 
+                http_build_query(array(
+                    'submitArrayjson' => $submitArrayjson
+                )
+            ))
+            ->post('http://contactmgr.loc/site/yii2curltest');
+            
         return $this->render('dectreesubmit', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -172,6 +187,8 @@ class PregnancyCdssPatientExamController extends Controller
             //'symptomsDataArray' => $symptomsDataArray,
             'submitArray' => $submitArray,
             'submitArrayjson' => $submitArrayjson,
+            'subarrcount' => $subarrcount,
+            'subarrsize' => $subarrsize,
         ]);
     }
 }

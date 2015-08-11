@@ -19,8 +19,8 @@ $dataList_decease=ArrayHelper::map(PregnancyCdssDeceaces::find()->asArray()->all
 //var_dump($dataProvider);
 //var_dump($formsDataArray);
 //var_dump($submitArray);
-VarDumper::dump($submitArray);
-print_r('<br>');
+//VarDumper::dump($submitArray);
+//print_r('<br>');
 //print_r($submitArrayjson);
 //print_r('<br>');
 //print_r(Json::decode($submitArrayjson));
@@ -34,8 +34,14 @@ print_r('<br>');
         <?//= Html::a('Create Pregnancy Cdss Patient Exam', ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Submit ALL records with existing final decease to GAE Deceases Tree Service as educational sets', ['decisiontreeeducationsubmit'], ['class' => 'btn btn-success']) ?>
     </p>
+        <p>
+        <?= Html::encode('Submited: '.$subarrcount.' records') ?>
+    </p>
+        <p>
+        <?= Html::encode('Submited: '.$subarrsize.' of data') ?>
+    </p>
     <p>
-        <?= Html::encode($submitReport) ?>
+        <?= Html::encode('Response: '.$submitReport) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
