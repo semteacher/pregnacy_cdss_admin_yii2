@@ -144,13 +144,14 @@ class PregnancyCdssPatientExamController extends Controller
             $client_decease = array();
             $client_data = array();
             
-            $client_description = array_merge($client_description, ['url'=>'http://openemr.tdmu.edu.ua', 'form_name' => 'Pregnancy CDSS Form', 'exam_id'=>intval($formsDataObj->id), 'patient_id'=>intval($formsDataObj->pid)]);
+            $client_description = array_merge($client_description, ['url'=>$_SERVER['SERVER_NAME'], 'form_name' => 'Pregnancy CDSS Form', 'exam_id'=>intval($formsDataObj->id), 'patient_id'=>intval($formsDataObj->pid)]);
             $client_decease = array_merge($client_decease, ['decease_id'=>$formsDataObj->id_finaldecease, 'decease_name'=>$formsDataObj->finaldecease]);
             $row = array_merge($row,['client_description'=>$client_description]);
             $row = array_merge($row,['client_decease'=>$client_decease]);
             
             foreach ($symptomsDataArray as $symptomsDataObj)
             {
+            //TODO: DID NOT SUPPORT MULTICHOICE SYMPTOMS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 $patientChoice = PregnancyCdssSymptoptByPatient::findOne(['id_exam'=>$formsDataObj->id, 'pid'=>$formsDataObj->pid, 'id_symptom'=>$symptomsDataObj->id]);
                 $patientChoiceName = PregnancyCdssSymptOptions::findOne(['id'=>$patientChoice->id_sympt_opt]);
                 //var_dump($symptomsDataObj->id);
