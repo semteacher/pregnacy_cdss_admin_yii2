@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\PregnancyCdssPatientExam;
 use app\models\PregnancyCdssPatientExamSearch;
 use app\models\PregnancyCdssSymptomsSearch;
 use app\models\PregnancyCdssSymptOptions;
@@ -129,9 +128,8 @@ class PregnancyCdssPatientExamController extends Controller
         $searchModel = new PregnancyCdssPatientExamSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $submitReport = 'Not implemented';
-        
-        $formsDataArray = $searchModel->find()->where(['id_finaldecease'=>'1'])->all();
-        //$formsDataset = PregnancyCdssDeceaces::find()->asArray()->all();
+
+        $formsDataArray = $dataProvider->getModels();
         
         $symptomsSearchModel = new PregnancyCdssSymptomsSearch();
         $symptomsDataArray = $symptomsSearchModel->find()->where(['is_selected'=>'1'])->all();
@@ -166,7 +164,6 @@ class PregnancyCdssPatientExamController extends Controller
         }
         //convert to json
         $submitArrayjson = Json::encode($submitArray);
-        $subarrcount = count($submitArray);
         $subarrsize = sizeof($submitArray);
         //Init curl
         $curl = new curl\Curl();
@@ -187,7 +184,6 @@ class PregnancyCdssPatientExamController extends Controller
             //'symptomsDataArray' => $symptomsDataArray,
             'submitArray' => $submitArray,
             'submitArrayjson' => $submitArrayjson,
-            'subarrcount' => $subarrcount,
             'subarrsize' => $subarrsize,
         ]);
     }

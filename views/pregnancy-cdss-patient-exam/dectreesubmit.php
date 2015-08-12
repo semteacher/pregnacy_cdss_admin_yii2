@@ -35,9 +35,6 @@ $dataList_decease=ArrayHelper::map(PregnancyCdssDeceaces::find()->asArray()->all
         <?= Html::a('Submit ALL records with existing final decease to GAE Deceases Tree Service as educational sets', ['decisiontreeeducationsubmit'], ['class' => 'btn btn-success']) ?>
     </p>
         <p>
-        <?= Html::encode('Submited: '.$subarrcount.' records') ?>
-    </p>
-        <p>
         <?= Html::encode('Submited: '.$subarrsize.' of data') ?>
     </p>
     <p>
