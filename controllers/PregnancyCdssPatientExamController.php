@@ -6,6 +6,7 @@ use Yii;
 use app\models\PregnancyCdssPatientExamSearch;
 use app\models\PregnancyCdssSymptomsSearch;
 use app\models\PregnancyCdssSymptOptions;
+use app\models\PregnancyCdssSymptOptionsSearch;
 use app\models\PregnancyCdssSymptoptByPatient;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -135,9 +136,7 @@ class PregnancyCdssPatientExamController extends Controller
         $symptomsDataArray = $symptomsSearchModel->find()->where(['is_selected'=>'1'])->all();
         
         $submitArray = array();
-        foreach ($formsDataArray as $formsDataObj) 
-        {
-            //$submitArray[$formsDataObj->id]=['pid'=>$formsDataObj->pid];
+        foreach ($formsDataArray as $formsDataObj) {
             //construct row
             $row = array();
             $client_description = array();
@@ -149,14 +148,26 @@ class PregnancyCdssPatientExamController extends Controller
             $row = array_merge($row,['client_description'=>$client_description]);
             $row = array_merge($row,['client_decease'=>$client_decease]);
             
-            foreach ($symptomsDataArray as $symptomsDataObj)
-            {
-            //TODO: DID NOT SUPPORT MULTICHOICE SYMPTOMS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                $patientChoice = PregnancyCdssSymptoptByPatient::findOne(['id_exam'=>$formsDataObj->id, 'pid'=>$formsDataObj->pid, 'id_symptom'=>$symptomsDataObj->id]);
-                $patientChoiceName = PregnancyCdssSymptOptions::findOne(['id'=>$patientChoice->id_sympt_opt]);
-                //var_dump($symptomsDataObj->id);
-                //TODO: bug! $symptomsDataObj->id did not produce key of array?????
-                $client_data = array_merge($client_data,[$symptomsDataObj->id=>['symp_id'=>$symptomsDataObj->id,'symp_name'=>$symptomsDataObj->symp_name,'opt_id'=>$patientChoice->id_sympt_opt, 'opt_name'=>$patientChoiceName->opt_name]]);
+            foreach ($symptomsDataArray as $symptomsDataObj) {
+                //submit ALL symptoms record
+                if ($symptomsDataObj->is_multi==1) {
+                    //multiple choice symptom
+                    $symptOptSearchModel = new PregnancyCdssSymptOptionsSearch();
+                    $symptOptDataArray = $symptOptSearchModel->find()->where(['id_symptom'=>$symptomsDataObj->id])->all();
+                    foreach ($symptOptDataArray as $symptOptDataObj) {
+                        $patientChoice = PregnancyCdssSymptoptByPatient::findOne(['id_exam'=>$formsDataObj->id, 'pid'=>$formsDataObj->pid, 'id_symptom'=>$symptomsDataObj->id, 'id_sympt_opt'=>$symptOptDataObj->id]); 
+                        if ($patientChoice) {
+                            $patientChoiceName = PregnancyCdssSymptOptions::findOne(['id'=>$patientChoice->id_sympt_opt]);
+                            $client_data = array_merge($client_data,[$symptomsDataObj->id=>['symp_id'=>$symptomsDataObj->id,'symp_name'=>$symptomsDataObj->symp_name,'opt_id'=>$patientChoice->id_sympt_opt, 'opt_name'=>$patientChoiceName->opt_name]]);
+                        }
+                    }
+                } else {
+                    //single choice symptom
+                    $patientChoice = PregnancyCdssSymptoptByPatient::findOne(['id_exam'=>$formsDataObj->id, 'pid'=>$formsDataObj->pid, 'id_symptom'=>$symptomsDataObj->id]);
+                    $patientChoiceName = PregnancyCdssSymptOptions::findOne(['id'=>$patientChoice->id_sympt_opt]);
+                    //TODO: bug! $symptomsDataObj->id did not produce key of array?????
+                    $client_data = array_merge($client_data,[$symptomsDataObj->id=>['symp_id'=>$symptomsDataObj->id,'symp_name'=>$symptomsDataObj->symp_name,'opt_id'=>$patientChoice->id_sympt_opt, 'opt_name'=>$patientChoiceName->opt_name]]);
+                }
             }
             $row = array_merge($row, ['client_data'=>$client_data]);
             //ad new row to array
