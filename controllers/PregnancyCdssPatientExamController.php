@@ -137,6 +137,7 @@ class PregnancyCdssPatientExamController extends Controller
         
         $submitArray = array();
         foreach ($formsDataArray as $formsDataObj) {
+            if ($formsDataObj->id_finaldecease) {
             //construct row
             $row = array();
             $client_description = array();
@@ -174,6 +175,8 @@ class PregnancyCdssPatientExamController extends Controller
             $submitArray[]= $row;
             //$submitArray[]=['exam_id'=>intval($formsDataObj->id), 'patient_id'=>intval($formsDataObj->pid), 'decease'=>$formsDataObj->id_finaldecease];
         }
+        }
+        if ($submitArray) {
         //convert to json
         $submitArrayjson = Json::encode($submitArray);
         $subarrsize = sizeof($submitArray);
@@ -187,7 +190,7 @@ class PregnancyCdssPatientExamController extends Controller
                 )
             ))
             ->post('http://contactmgr.loc/site/yii2curltest');
-            
+         }   
         return $this->render('dectreesubmit', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

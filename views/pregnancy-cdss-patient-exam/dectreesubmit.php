@@ -18,11 +18,11 @@ $dataList_decease=ArrayHelper::map(PregnancyCdssDeceaces::find()->asArray()->all
 
 //var_dump($dataProvider);
 //var_dump($formsDataArray);
-//var_dump($submitArray);
+var_dump($submitArray);
 //VarDumper::dump($submitArray);
-//print_r('<br>');
-//print_r($submitArrayjson);
-//print_r('<br>');
+print_r('<br>');
+print_r($submitArrayjson);
+print_r('<br>');
 //print_r(Json::decode($submitArrayjson));
 ?>
 <div class="pregnancy-cdss-patient-exam-index">
