@@ -3,20 +3,20 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper; // load classes
-use app\models\PregnancyCdssDeceaces;
+use app\models\PregnancyCdssDiseases;
 use app\models\PregnancyCdssSymptoms;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\PregnancyCdssDeceasesSymptOptSearch */
+/* @var $searchModel app\models\PregnancyCdssDiseasesSymptOptSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Pregnancy CDSS: Deceases by Symptom Option';
 $this->params['breadcrumbs'][] = $this->title;
 
-$dataList_decease=ArrayHelper::map(PregnancyCdssDeceaces::find()->asArray()->all(), 'id', 'dec_name');
+$dataList_decease=ArrayHelper::map(PregnancyCdssDiseases::find()->asArray()->all(), 'id', 'dis_name');
 $dataList_symptom=ArrayHelper::map(PregnancyCdssSymptoms::find()->asArray()->all(), 'id', 'symp_name');
 ?>
-<div class="pregnancy-cdss-deceases-sympt-opt-index">
+<div class="pregnancy-cdss-diseases-sympt-opt-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -31,11 +31,11 @@ $dataList_symptom=ArrayHelper::map(PregnancyCdssSymptoms::find()->asArray()->all
         'columns' => [
             'id',
             [
-                'attribute' => 'id_deceaces',
+                'attribute' => 'id_diseases',
                 'label'=>'Decease Name',
                 'format'=>'text',
                 'filter'=>$dataList_decease,
-                'value'=>'deceaces.dec_name'
+                'value'=>'diseases.dis_name'
             ],
             [
                 'attribute' => 'symptOpt.id_symptom',

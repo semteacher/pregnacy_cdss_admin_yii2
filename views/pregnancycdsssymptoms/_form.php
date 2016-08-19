@@ -15,8 +15,7 @@ $dataList=ArrayHelper::map(PregnancyCdssSymptCategory::find()->asArray()->all(),
 <div class="pregnancy-cdss-symptoms-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?//= $form->field($model, 'id_category')->textInput() ?>
+    
     <?=$form->field($model, 'id_category')->dropDownList($dataList, 
          ['prompt'=>'--- Choose a Category: ---']) ?>
     

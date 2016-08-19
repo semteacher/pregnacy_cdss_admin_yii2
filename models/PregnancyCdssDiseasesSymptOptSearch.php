@@ -5,17 +5,17 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\PregnancyCdssDeceasesSymptOpt;
+use app\models\PregnancyCdssDiseasesSymptOpt;
 
 /**
- * PregnancyCdssDeceasesSymptOptSearch represents the model behind the search form about `app\models\PregnancyCdssDeceasesSymptOpt`.
+ * PregnancyCdssDiseasesSymptOptSearch represents the model behind the search form about `app\models\PregnancyCdssDiseasesSymptOpt`.
  */
-class PregnancyCdssDeceasesSymptOptSearch extends PregnancyCdssDeceasesSymptOpt
+class PregnancyCdssDiseasesSymptOptSearch extends PregnancyCdssDiseasesSymptOpt
 {
     public function attributes()
     {
         // add related fields to searchable attributes
-        return array_merge(parent::attributes(), ['deceaces.dec_name', 'symptOpt.opt_name', 'symptOpt.id_symptom', 'symptOpt.symptom.symp_name']);
+        return array_merge(parent::attributes(), ['diseases.dis_name', 'symptOpt.opt_name', 'symptOpt.id_symptom', 'symptOpt.symptom.symp_name']);
     }
 
     /**
@@ -24,9 +24,9 @@ class PregnancyCdssDeceasesSymptOptSearch extends PregnancyCdssDeceasesSymptOpt
     public function rules()
     {
         return [
-            [['id', 'id_deceaces', 'id_sympt_opt', 'symptOpt.id_symptom'], 'integer'],
+            [['id', 'id_diseases', 'id_sympt_opt', 'symptOpt.id_symptom'], 'integer'],
             [['py', 'pn'], 'number'],
-            [['deceaces.dec_name', 'symptOpt.opt_name', 'symptOpt.symptom.symp_name'], 'safe'],
+            [['diseases.dis_name', 'symptOpt.opt_name', 'symptOpt.symptom.symp_name'], 'safe'],
         ];
     }
 
@@ -48,14 +48,14 @@ class PregnancyCdssDeceasesSymptOptSearch extends PregnancyCdssDeceasesSymptOpt
      */
     public function search($params)
     {
-        $query = PregnancyCdssDeceasesSymptOpt::find();
+        $query = PregnancyCdssDiseasesSymptOpt::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
         // join with relation `symptOpt` that is a relation to the table `form_pregnancycdss_sympt_opt`
-        // and set the table alias to be `Deceaces` (upd: table name get from model class by method)
+        // and set the table alias to be `Diseases` (upd: table name get from model class by method)
         $query->joinWith(['symptOpt' => function($query) { $query->from(['symptOpt' => PregnancyCdssSymptOptions::tableName()]); }]);
 
         // enable sorting for the related column
@@ -80,7 +80,7 @@ class PregnancyCdssDeceasesSymptOptSearch extends PregnancyCdssDeceasesSymptOpt
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'id_deceaces' => $this->id_deceaces,
+            'id_diseases' => $this->id_diseases,
             'id_sympt_opt' => $this->id_sympt_opt,
             'py' => $this->py,
             'pn' => $this->pn,

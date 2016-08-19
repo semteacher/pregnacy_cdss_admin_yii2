@@ -37,15 +37,15 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'is_firstpregnancy') ?>
 
-    <?php // echo $form->field($model, 'expect_decease') ?>
+    <?php // echo $form->field($model, 'expect_disease') ?>
 
-    <?php // echo $form->field($model, 'deceases') ?>
+    <?php // echo $form->field($model, 'diseases') ?>
 
-    <?php // echo $form->field($model, 'id_finaldecease') ?>
+    <?php // echo $form->field($model, 'id_finaldisease') ?>
 
-    <?php // echo $form->field($model, 'finaldecease') ?>
+    <?php // echo $form->field($model, 'finaldisease') ?>
 
-    <?php // echo $form->field($model, 'finaldecease_icd10') ?>
+    <?php // echo $form->field($model, 'finaldisease_icd10') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

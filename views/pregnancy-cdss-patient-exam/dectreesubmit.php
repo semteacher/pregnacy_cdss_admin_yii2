@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper; // load classes
-use app\models\PregnancyCdssDeceaces;
+use app\models\PregnancyCdssDiseases;
 use yii\helpers\Json;
 use yii\helpers\VarDumper;
 
@@ -14,7 +14,7 @@ use yii\helpers\VarDumper;
 $this->title = 'Pregnancy Cdss Patient Exams';
 $this->params['breadcrumbs'][] = $this->title;
 
-$dataList_decease=ArrayHelper::map(PregnancyCdssDeceaces::find()->asArray()->all(), 'dec_name', 'dec_name');
+$dataList_decease=ArrayHelper::map(PregnancyCdssDiseases::find()->asArray()->all(), 'dis_name', 'dis_name');
 
 //var_dump($dataProvider);
 //var_dump($formsDataArray);
@@ -28,10 +28,8 @@ print_r('<br>');
 <div class="pregnancy-cdss-patient-exam-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?//= Html::a('Create Pregnancy Cdss Patient Exam', ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Submit ALL records with existing final decease to GAE Deceases Tree Service as educational sets', ['decisiontreeeducationsubmit'], ['class' => 'btn btn-success']) ?>
     </p>
         <p>
@@ -63,23 +61,23 @@ print_r('<br>');
             'format' => 'boolean',
             'filter'=>array("0"=>"No","1"=>"Yes"),
             ], 
-             //'expect_decease',
+             //'expect_disease',
             [
-                'attribute' => 'expect_decease',
+                'attribute' => 'expect_disease',
                 'format'=>'text',
                 'filter'=>$dataList_decease,
-                'value'=>'expect_decease'
+                'value'=>'expect_disease'
             ],             
-            // 'deceases:ntext',
-            // 'id_finaldecease',
-            // 'finaldecease',
+            // 'diseases:ntext',
+            // 'id_finaldisease',
+            // 'finaldisease',
             [
-                'attribute' => 'finaldecease',
+                'attribute' => 'finaldisease',
                 'format'=>'text',
                 'filter'=>$dataList_decease,
-                'value'=>'finaldecease'
+                'value'=>'finaldisease'
             ],
-            // 'finaldecease_icd10',
+            // 'finaldisease_icd10',
             'user',
             [
             'attribute' => 'formsData.deleted',

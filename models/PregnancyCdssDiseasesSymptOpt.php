@@ -5,25 +5,25 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "form_pregnancycdss_deceases_sympt_opt".
+ * This is the model class for table "form_pregnancycdss_diseases_sympt_opt".
  *
  * @property string $id
- * @property integer $id_deceaces
+ * @property integer $id_diseases
  * @property string $id_sympt_opt
  * @property double $py
  * @property double $pn
  *
- * @property PregnancycdssDeceaces $deceaces
- * @property PregnancycdssSymptOptions $symptOpt
+ * @property PregnancyCdssDiseases $deceaces
+ * @property PregnancyCdssSymptOptions $symptOpt
  */
-class PregnancyCdssDeceasesSymptOpt extends \yii\db\ActiveRecord
+class PregnancyCdssDiseasesSymptOpt extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'form_pregnancycdss_deceases_sympt_opt';
+        return 'form_pregnancycdss_diseases_sympt_opt';
     }
 
     /**
@@ -32,7 +32,7 @@ class PregnancyCdssDeceasesSymptOpt extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_deceaces', 'id_sympt_opt'], 'integer'],
+            [['id_diseases', 'id_sympt_opt'], 'integer'],
             [['py', 'pn'], 'number']
         ];
     }
@@ -44,7 +44,7 @@ class PregnancyCdssDeceasesSymptOpt extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_deceaces' => 'Id Deceaces',
+            'id_diseases' => 'Id Deseases',
             'id_sympt_opt' => 'Id Sympt Opt',
             'py' => 'Py',
             'pn' => 'Pn',
@@ -54,9 +54,9 @@ class PregnancyCdssDeceasesSymptOpt extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getDeceaces()
+    public function getDiseases()
     {
-        return $this->hasOne(PregnancyCdssDeceaces::className(), ['id' => 'id_deceaces']);
+        return $this->hasOne(PregnancyCdssDiseases::className(), ['id' => 'id_diseases']);
     }
 
     /**

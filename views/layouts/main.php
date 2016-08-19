@@ -38,11 +38,11 @@ AppAsset::register($this);
                     ['label' => 'Home', 'url' => ['/site/index']],
                     //['label' => 'About', 'url' => ['/site/about']],
                     ['label' => 'Patient Exams', 'url' => ['/pregnancy-cdss-patient-exam/index']],
-                    ['label' => 'Deceases', 'url' => ['/pregnancycdssdeceaces/index']],
+                    ['label' => 'Deceases', 'url' => ['/pregnancycdssdiseases/index']],
                     ['label' => 'Symptom Groups', 'url' => ['/pregnancycdsssymptcategory/index']],
                     ['label' => 'Symptoms', 'url' => ['/pregnancycdsssymptoms/index']],
                     ['label' => 'Symptom Options', 'url' => ['/pregnancycdsssymptoptions/index']],
-                    ['label' => 'Deceases per Symptom Options', 'url' => ['/pregnancycdssdeceasessymptopt/index']],
+                    ['label' => 'Deceases per Symptom Options', 'url' => ['/pregnancycdssdiseasessymptopt/index']],
                     //['label' => 'Contact', 'url' => ['/site/contact']],
                     //Yii::$app->user->isGuest ?
                     //    ['label' => 'Login', 'url' => ['/site/login']] :

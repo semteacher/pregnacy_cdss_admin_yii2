@@ -32,15 +32,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'is_firstpregnancy')->textInput() ?>
 
-    <?= $form->field($model, 'expect_decease')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'expect_disease')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'deceases')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'diseases')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'id_finaldecease')->textInput() ?>
+    <?= $form->field($model, 'id_finaldisease')->textInput() ?>
 
-    <?= $form->field($model, 'finaldecease')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'finaldisease')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'finaldecease_icd10')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'finaldisease_icd10')->textInput(['maxlength' => 255]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

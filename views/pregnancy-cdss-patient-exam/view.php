@@ -39,11 +39,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'createuser',
             'createdate',
             'is_firstpregnancy',
-            'expect_decease',
-            'deceases:ntext',
-            'id_finaldecease',
-            'finaldecease',
-            'finaldecease_icd10',
+            'expect_disease',
+            'diseases:ntext',
+            'id_finaldisease',
+            'finaldisease',
+            'finaldisease_icd10',
         ],
     ]) ?>
 

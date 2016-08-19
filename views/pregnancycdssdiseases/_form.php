@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PregnancyCdssDeceaces */
+/* @var $model app\models\PregnancyCdssDiseases */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="pregnancy-cdss-deceaces-form">
+<div class="pregnancy-cdss-diseases-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'dec_name')->textInput(['maxlength' => 100]) ?>
+    <?= $form->field($model, 'dis_name')->textInput(['maxlength' => 100]) ?>
 
-    <?= $form->field($model, 'dec_note')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'dis_note')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'dec_icd10')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'dis_icd10')->textInput(['maxlength' => 255]) ?>
 
     <?= $form->field($model, 'p')->textInput() ?>
 

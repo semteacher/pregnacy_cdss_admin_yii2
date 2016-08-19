@@ -13,7 +13,7 @@ use Yii;
  * @property integer $id_order
  * @property integer $is_selected
  *
- * @property PregnancycdssDeceasesSymptOpt[] $pregnancycdssDeceasesSymptOpts
+ * @property PregnancyCdssDiseasesSymptOpt[] $pregnancycdssDeceasesSymptOpts
  * @property PregnancyCdssSymptoms $symptom
  */
 class PregnancyCdssSymptOptions extends \yii\db\ActiveRecord
@@ -56,7 +56,7 @@ class PregnancyCdssSymptOptions extends \yii\db\ActiveRecord
      */
     public function getPregnancycdssDeceasesSymptOpts()
     {
-        return $this->hasMany(PregnancycdssDeceasesSymptOpt::className(), ['id_sympt_opt' => 'id']);
+        return $this->hasMany(PregnancyCdssDiseasesSymptOpt::className(), ['id_sympt_opt' => 'id']);
     }
 
     /**

@@ -15,8 +15,7 @@ $dataList=ArrayHelper::map(PregnancyCdssSymptoms::find()->asArray()->all(), 'id'
 <div class="pregnancy-cdss-sympt-options-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?//= $form->field($model, 'id_symptom')->textInput(['maxlength' => 20]) ?>
+    
         <?=$form->field($model, 'id_symptom')->dropDownList($dataList, 
          ['prompt'=>'--- Choose a Symptom: ---']) ?>
 

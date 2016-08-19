@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PregnancyCdssDeceasesSymptOpt */
+/* @var $model app\models\PregnancyCdssDiseases */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Pregnancy CDSS: Deceases by Symptom Option', 'url' => ['index']];
+$this->title = $model->dis_name;
+$this->params['breadcrumbs'][] = ['label' => 'Pregnancy CDSS Diseases', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pregnancy-cdss-deceases-sympt-opt-view">
+<div class="pregnancy-cdss-diseases-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,17 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            [
-                'attribute' => 'deceaces.dec_name'
-            ],
-            [
-                'attribute' => 'symptOpt.symptom.symp_name'
-            ],
-            [
-                'attribute' => 'symptOpt.opt_name'
-            ],
-            'py',
-            'pn',
+            'dis_name',
+            'dis_note',
+            'dis_icd10',
+            'p',
         ],
     ]) ?>
 

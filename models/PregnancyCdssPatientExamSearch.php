@@ -24,8 +24,8 @@ class PregnancyCdssPatientExamSearch extends PregnancyCdssPatientExam
     public function rules()
     {
         return [
-            [['id', 'pid', 'authorized', 'activity', 'encounter', 'is_firstpregnancy', 'id_finaldecease'], 'integer'],
-            [['date', 'user', 'groupname', 'createuser', 'createdate', 'expect_decease', 'deceases', 'finaldecease', 'finaldecease_icd10', 'patientData.lname', 'patientData.fullName', 'formsData.deleted'], 'safe'],
+            [['id', 'pid', 'authorized', 'activity', 'encounter', 'is_firstpregnancy', 'id_finaldisease'], 'integer'],
+            [['date', 'user', 'groupname', 'createuser', 'createdate', 'expect_disease', 'diseases', 'finaldisease', 'finaldisease_icd10', 'patientData.lname', 'patientData.fullName', 'formsData.deleted'], 'safe'],
         ];
     }
 
@@ -90,16 +90,16 @@ class PregnancyCdssPatientExamSearch extends PregnancyCdssPatientExam
             'encounter' => $this->encounter,
             'createdate' => $this->createdate,
             'is_firstpregnancy' => $this->is_firstpregnancy,
-            'id_finaldecease' => $this->id_finaldecease,
+            'id_finaldisease' => $this->id_finaldisease,
         ]);
 
         $query->andFilterWhere(['like', 'user', $this->user])
             ->andFilterWhere(['like', 'groupname', $this->groupname])
             ->andFilterWhere(['like', 'createuser', $this->createuser])
-            ->andFilterWhere(['like', 'expect_decease', $this->expect_decease])
-            ->andFilterWhere(['like', 'deceases', $this->deceases])
-            ->andFilterWhere(['like', 'finaldecease', $this->finaldecease])
-            ->andFilterWhere(['like', 'finaldecease_icd10', $this->finaldecease_icd10]);
+            ->andFilterWhere(['like', 'expect_disease', $this->expect_disease])
+            ->andFilterWhere(['like', 'diseases', $this->diseases])
+            ->andFilterWhere(['like', 'finaldisease', $this->finaldisease])
+            ->andFilterWhere(['like', 'finaldisease_icd10', $this->finaldisease_icd10]);
             
         $query->andFilterWhere(['like', 'patientData.lname', $this->getAttribute('patientData.fullName')]);
 

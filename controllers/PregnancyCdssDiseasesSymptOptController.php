@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\PregnancyCdssDeceaces;
-use app\models\PregnancyCdssDeceacesSearch;
+use app\models\PregnancyCdssDiseasesSymptOpt;
+use app\models\PregnancyCdssDiseasesSymptOptSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PregnancyCdssDeceacesController implements the CRUD actions for PregnancyCdssDeceaces model.
+ * PregnancyCdssDiseasesSymptOptController implements the CRUD actions for PregnancyCdssDiseasesSymptOpt model.
  */
-class PregnancyCdssDeceacesController extends Controller
+class PregnancyCdssDiseasesSymptOptController extends Controller
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class PregnancyCdssDeceacesController extends Controller
     }
 
     /**
-     * Lists all PregnancyCdssDeceaces models.
+     * Lists all PregnancyCdssDiseasesSymptOpt models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PregnancyCdssDeceacesSearch();
+        $searchModel = new PregnancyCdssDiseasesSymptOptSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,8 +42,8 @@ class PregnancyCdssDeceacesController extends Controller
     }
 
     /**
-     * Displays a single PregnancyCdssDeceaces model.
-     * @param integer $id
+     * Displays a single PregnancyCdssDiseasesSymptOpt model.
+     * @param string $id
      * @return mixed
      */
     public function actionView($id)
@@ -54,13 +54,13 @@ class PregnancyCdssDeceacesController extends Controller
     }
 
     /**
-     * Creates a new PregnancyCdssDeceaces model.
+     * Creates a new PregnancyCdssDiseasesSymptOpt model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new PregnancyCdssDeceaces();
+        $model = new PregnancyCdssDiseasesSymptOpt();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,9 +72,9 @@ class PregnancyCdssDeceacesController extends Controller
     }
 
     /**
-     * Updates an existing PregnancyCdssDeceaces model.
+     * Updates an existing PregnancyCdssDiseasesSymptOpt model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionUpdate($id)
@@ -91,9 +91,9 @@ class PregnancyCdssDeceacesController extends Controller
     }
 
     /**
-     * Deletes an existing PregnancyCdssDeceaces model.
+     * Deletes an existing PregnancyCdssDiseasesSymptOpt model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionDelete($id)
@@ -104,15 +104,15 @@ class PregnancyCdssDeceacesController extends Controller
     }
 
     /**
-     * Finds the PregnancyCdssDeceaces model based on its primary key value.
+     * Finds the PregnancyCdssDiseasesSymptOpt model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return PregnancyCdssDeceaces the loaded model
+     * @param string $id
+     * @return PregnancyCdssDiseasesSymptOpt the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = PregnancyCdssDeceaces::findOne($id)) !== null) {
+        if (($model = PregnancyCdssDiseasesSymptOpt::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

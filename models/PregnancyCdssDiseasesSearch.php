@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\PregnancyCdssDeceaces;
+use app\models\PregnancyCdssDiseases;
 
 /**
- * PregnancyCdssDeceacesSearch represents the model behind the search form about `app\models\PregnancyCdssDeceaces`.
+ * PregnancyCdssDiseasesSearch represents the model behind the search form about `app\models\PregnancyCdssDiseases`.
  */
-class PregnancyCdssDeceacesSearch extends PregnancyCdssDeceaces
+class PregnancyCdssDiseasesSearch extends PregnancyCdssDiseases
 {
     /**
      * @inheritdoc
@@ -19,7 +19,7 @@ class PregnancyCdssDeceacesSearch extends PregnancyCdssDeceaces
     {
         return [
             [['id'], 'integer'],
-            [['dec_name', 'dec_note', 'dec_icd10'], 'safe'],
+            [['dis_name', 'dis_note', 'dis_icd10'], 'safe'],
             [['p'], 'number'],
         ];
     }
@@ -42,7 +42,7 @@ class PregnancyCdssDeceacesSearch extends PregnancyCdssDeceaces
      */
     public function search($params)
     {
-        $query = PregnancyCdssDeceaces::find();
+        $query = PregnancyCdssDiseases::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -61,8 +61,8 @@ class PregnancyCdssDeceacesSearch extends PregnancyCdssDeceaces
             'p' => $this->p,
         ]);
 
-        $query->andFilterWhere(['like', 'dec_name', $this->dec_name])
-            ->andFilterWhere(['like', 'dec_note', $this->dec_note]);
+        $query->andFilterWhere(['like', 'dis_name', $this->dis_name])
+            ->andFilterWhere(['like', 'dis_note', $this->dis_note]);
 
         return $dataProvider;
     }

@@ -3,14 +3,14 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PregnancyCdssDeceaces */
+/* @var $model app\models\PregnancyCdssDiseasesSymptOpt */
 
-$this->title = 'Update Pregnancy CDSS Deceace: ' . ' ' . $model->dec_name;
-$this->params['breadcrumbs'][] = ['label' => 'Pregnancy CDSS Deceaces', 'url' => ['index']];
+$this->title = 'Update Pregnancy CDSS Deceases Sympt Opt: ' . ' ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Pregnancy CDSS Deceases Sympt Opts', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="pregnancy-cdss-deceaces-update">
+<div class="pregnancy-cdss-diseases-sympt-opt-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

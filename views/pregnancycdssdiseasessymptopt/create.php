@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PregnancyCdssDeceasesSymptOpt */
+/* @var $model app\models\PregnancyCdssDiseasesSymptOpt */
 
 $this->title = 'Create Pregnancy Cdss Deceases Sympt Opt';
 $this->params['breadcrumbs'][] = ['label' => 'Pregnancy Cdss Deceases Sympt Opts', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pregnancy-cdss-deceases-sympt-opt-create">
+<div class="pregnancy-cdss-diseases-sympt-opt-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

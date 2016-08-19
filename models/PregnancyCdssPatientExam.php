@@ -44,9 +44,9 @@ class PregnancyCdssPatientExam extends \yii\db\ActiveRecord
     {
         return [
             [['date', 'createdate'], 'safe'],
-            [['pid', 'authorized', 'activity', 'encounter', 'is_firstpregnancy', 'id_finaldecease'], 'integer'],
-            [['deceases'], 'string'],
-            [['user', 'groupname', 'createuser', 'expect_decease', 'finaldecease', 'finaldecease_icd10'], 'string', 'max' => 255]
+            [['pid', 'authorized', 'activity', 'encounter', 'is_firstpregnancy', 'id_finaldisease'], 'integer'],
+            [['diseases'], 'string'],
+            [['user', 'groupname', 'createuser', 'expect_disease', 'finaldisease', 'finaldisease_icd10'], 'string', 'max' => 255]
         ];
     }
 
@@ -67,11 +67,11 @@ class PregnancyCdssPatientExam extends \yii\db\ActiveRecord
             'createuser' => 'Createuser',
             'createdate' => 'Createdate',
             'is_firstpregnancy' => 'First Pregnancy',
-            'expect_decease' => 'Expect Decease',
-            'deceases' => 'Deceases',
-            'id_finaldecease' => 'Id Finaldecease',
-            'finaldecease' => 'Final Decease',
-            'finaldecease_icd10' => 'Finaldecease Icd10',
+            'expect_disease' => 'Expect Decease',
+            'diseases' => 'Deceases',
+            'id_finaldisease' => 'Id Finaldecease',
+            'finaldisease' => 'Final Decease',
+            'finaldisease_icd10' => 'Finaldecease Icd10',
         ];
     }
 

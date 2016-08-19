@@ -137,7 +137,7 @@ class PregnancyCdssPatientExamController extends Controller
         
         $submitArray = array();
         foreach ($formsDataArray as $formsDataObj) {
-            if ($formsDataObj->id_finaldecease) {
+            if ($formsDataObj->id_finaldisease) {
             //construct row
             $row = array();
             $client_description = array();
@@ -145,7 +145,7 @@ class PregnancyCdssPatientExamController extends Controller
             $client_data = array();
             
             $client_description = array_merge($client_description, ['url'=>$_SERVER['SERVER_NAME'], 'form_name' => 'Pregnancy CDSS Form', 'exam_id'=>intval($formsDataObj->id), 'patient_id'=>intval($formsDataObj->pid)]);
-            $client_decease = array_merge($client_decease, ['decease_id'=>$formsDataObj->id_finaldecease, 'decease_name'=>$formsDataObj->finaldecease]);
+            $client_decease = array_merge($client_decease, ['decease_id'=>$formsDataObj->id_finaldisease, 'decease_name'=>$formsDataObj->finaldisease]);
             $row = array_merge($row,['client_description'=>$client_description]);
             $row = array_merge($row,['client_decease'=>$client_decease]);
             
@@ -173,7 +173,7 @@ class PregnancyCdssPatientExamController extends Controller
             $row = array_merge($row, ['client_data'=>$client_data]);
             //ad new row to array
             $submitArray[]= $row;
-            //$submitArray[]=['exam_id'=>intval($formsDataObj->id), 'patient_id'=>intval($formsDataObj->pid), 'decease'=>$formsDataObj->id_finaldecease];
+            //$submitArray[]=['exam_id'=>intval($formsDataObj->id), 'patient_id'=>intval($formsDataObj->pid), 'decease'=>$formsDataObj->id_finaldisease];
         }
         }
         if ($submitArray) {

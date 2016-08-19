@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PregnancyCdssDeceasesSymptOptSearch */
+/* @var $model app\models\PregnancyCdssDiseasesSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="pregnancy-cdss-deceases-sympt-opt-search">
+<div class="pregnancy-cdss-diseases-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -17,13 +17,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'id_deceaces') ?>
+    <?= $form->field($model, 'dis_name') ?>
 
-    <?= $form->field($model, 'id_sympt_opt') ?>
+    <?= $form->field($model, 'dis_note') ?>
 
-    <?= $form->field($model, 'py') ?>
+    <?= $form->field($model, 'dis_icd10') ?>
 
-    <?= $form->field($model, 'pn') ?>
+    <?= $form->field($model, 'p') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

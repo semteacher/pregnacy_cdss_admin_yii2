@@ -123,7 +123,7 @@ class SiteController extends Controller
 
     public function actionDeceaces()
     {
-        return $this->redirect(Url::to(['/pregnancycdssdeceaces/index']));
+        return $this->redirect(Url::to(['/pregnancycdssdiseases/index']));
     }
 
     public function actionAbout()
