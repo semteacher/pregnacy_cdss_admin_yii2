@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\PregnancyCdssPatientExam;
 use app\models\PregnancyCdssPatientExamSearch;
 use app\models\PregnancyCdssSymptomsSearch;
 use app\models\PregnancyCdssSymptOptions;
