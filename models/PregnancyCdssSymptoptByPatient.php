@@ -13,7 +13,7 @@ use Yii;
  * @property string $user
  * @property string $id_symptom
  * @property string $id_sympt_opt
- * @property integer $id_deceases
+ * @property integer $id_diseases
  * @property double $py
  * @property double $pn
  * @property integer $id_sympt_cat
@@ -37,7 +37,7 @@ class PregnancyCdssSymptoptByPatient extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_exam', 'pid', 'id_symptom', 'id_sympt_opt', 'id_deceases', 'id_sympt_cat', 'id_order'], 'integer'],
+            [['id_exam', 'pid', 'id_symptom', 'id_sympt_opt', 'id_diseases', 'id_sympt_cat', 'id_order'], 'integer'],
             [['py', 'pn'], 'number'],
             [['user'], 'string', 'max' => 255]
         ];
@@ -55,7 +55,7 @@ class PregnancyCdssSymptoptByPatient extends \yii\db\ActiveRecord
             'user' => 'User',
             'id_symptom' => 'Id Symptom',
             'id_sympt_opt' => 'Id Sympt Opt',
-            'id_deceases' => 'Id Deceases',
+            'id_diseases' => 'Id Diseases',
             'py' => 'Py',
             'pn' => 'Pn',
             'id_sympt_cat' => 'Id Sympt Cat',
@@ -68,6 +68,6 @@ class PregnancyCdssSymptoptByPatient extends \yii\db\ActiveRecord
      */
     public function getIdExam()
     {
-        return $this->hasOne(FormPregnancycdssPatientExam::className(), ['id' => 'id_exam']);
+        return $this->hasOne(PregnancyCdssPatientExam::className(), ['id' => 'id_exam']);
     }
 }

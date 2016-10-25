@@ -10,10 +10,10 @@ use app\models\PregnancyCdssSymptoms;
 /* @var $searchModel app\models\PregnancyCdssDiseasesSymptOptSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pregnancy CDSS: Deceases by Symptom Option';
+$this->title = 'Pregnancy CDSS: Diseases per Symptom Option';
 $this->params['breadcrumbs'][] = $this->title;
 
-$dataList_decease=ArrayHelper::map(PregnancyCdssDiseases::find()->asArray()->all(), 'id', 'dis_name');
+$dataList_disease=ArrayHelper::map(PregnancyCdssDiseases::find()->asArray()->all(), 'id', 'dis_name');
 $dataList_symptom=ArrayHelper::map(PregnancyCdssSymptoms::find()->asArray()->all(), 'id', 'symp_name');
 ?>
 <div class="pregnancy-cdss-diseases-sympt-opt-index">
@@ -22,7 +22,7 @@ $dataList_symptom=ArrayHelper::map(PregnancyCdssSymptoms::find()->asArray()->all
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Pregnancy CDSS Deceases by Symptom Option', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Pregnancy CDSS Diseases per Symptom Option', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -32,14 +32,15 @@ $dataList_symptom=ArrayHelper::map(PregnancyCdssSymptoms::find()->asArray()->all
             'id',
             [
                 'attribute' => 'id_diseases',
-                'label'=>'Decease Name',
+                'label'=>'Disease Name',
                 'format'=>'text',
-                'filter'=>$dataList_decease,
+                'filter'=>$dataList_disease,
                 'value'=>'diseases.dis_name'
             ],
             [
                 'attribute' => 'symptOpt.id_symptom',
                 'label'=>'Symptom Name',
+                'format'=>'text',
                 'filter'=>$dataList_symptom,
                 'value' => 'symptOpt.symptom.symp_name'
             ],

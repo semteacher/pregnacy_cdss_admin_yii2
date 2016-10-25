@@ -44,7 +44,7 @@ class PregnancyCdssDiseasesSymptOpt extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_diseases' => 'Id Deseases',
+            'id_diseases' => 'Id Diseases',
             'id_sympt_opt' => 'Id Sympt Opt',
             'py' => 'Py',
             'pn' => 'Pn',

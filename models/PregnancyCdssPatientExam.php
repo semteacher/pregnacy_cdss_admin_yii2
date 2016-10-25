@@ -18,11 +18,11 @@ use Yii;
  * @property string $createuser
  * @property string $createdate
  * @property integer $is_firstpregnancy
- * @property string $expect_decease
- * @property string $deceases
- * @property integer $id_finaldecease
- * @property string $finaldecease
- * @property string $finaldecease_icd10
+ * @property string $expect_disease
+ * @property string $diseases
+ * @property integer $id_finaldisease
+ * @property string finaldisease
+ * @property string $finaldisease_icd10
  *
  * @property FormPregnancycdssSymptoptByPatient[] $formPregnancycdssSymptoptByPatients
  */
@@ -64,14 +64,14 @@ class PregnancyCdssPatientExam extends \yii\db\ActiveRecord
             'authorized' => 'Authorized',
             'activity' => 'Activity',
             'encounter' => 'Encounter',
-            'createuser' => 'Createuser',
-            'createdate' => 'Createdate',
+            'createuser' => 'Create User',
+            'createdate' => 'Create Date',
             'is_firstpregnancy' => 'First Pregnancy',
-            'expect_disease' => 'Expect Decease',
-            'diseases' => 'Deceases',
-            'id_finaldisease' => 'Id Finaldecease',
-            'finaldisease' => 'Final Decease',
-            'finaldisease_icd10' => 'Finaldecease Icd10',
+            'expect_disease' => 'Expect Disease',
+            'diseases' => 'Diseases',
+            'id_finaldisease' => 'Id FinalDisease',
+            'finaldisease' => 'Final Disease',
+            'finaldisease_icd10' => 'FinalDisease ICD10',
         ];
     }
 

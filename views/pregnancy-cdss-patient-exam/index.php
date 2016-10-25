@@ -9,7 +9,7 @@ use app\models\PregnancyCdssDiseases;
 /* @var $searchModel app\models\PregnancyCdssPatientExamSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pregnancy Cdss Patient Exams';
+$this->title = 'Pregnancy CDSS Patient Exams';
 $this->params['breadcrumbs'][] = $this->title;
 
 $dataList_decease=ArrayHelper::map(PregnancyCdssDiseases::find()->asArray()->all(), 'dis_name', 'dis_name');
@@ -19,7 +19,7 @@ $dataList_decease=ArrayHelper::map(PregnancyCdssDiseases::find()->asArray()->all
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Submit ALL records with existing final decease to GAE Deceases Tree Service as educational sets', ['decisiontreeeducationsubmit'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Submit ALL records with existing final disease to GAE Diseases Tree Service as educational sets', ['decisiontreeeducationsubmit'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

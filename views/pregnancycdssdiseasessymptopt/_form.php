@@ -18,7 +18,7 @@ $dataList_symptopt=ArrayHelper::map(PregnancyCdssSymptOptions::find()->with(['sy
     <?php $form = ActiveForm::begin(); ?>
     
     <?=$form->field($model, 'id_diseases')->dropDownList($dataList_decease,
-        ['prompt'=>'--- Choose a Decease: ---']) ?>
+        ['prompt'=>'--- Choose a Disease: ---']) ?>
     
     <?=$form->field($model, 'id_sympt_opt')->dropDownList($dataList_symptopt,
         ['prompt'=>'--- Choose a Symptom Option: ---']) ?>

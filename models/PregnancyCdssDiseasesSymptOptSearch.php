@@ -59,16 +59,22 @@ class PregnancyCdssDiseasesSymptOptSearch extends PregnancyCdssDiseasesSymptOpt
         $query->joinWith(['symptOpt' => function($query) { $query->from(['symptOpt' => PregnancyCdssSymptOptions::tableName()]); }]);
 
         // enable sorting for the related column
+        //$dataProvider->sort->attributes['symptOpt.symptom.symp_name'] = [
+        //    'asc' => ['symptOpt.symptom.symp_name' => SORT_ASC],
+        //    'desc' => ['symptOpt.symptom.symp_name' => SORT_DESC],
+        //];
+
+        // enable sorting for the related column
         $dataProvider->sort->attributes['symptOpt.opt_name'] = [
             'asc' => ['symptOpt.opt_name' => SORT_ASC],
             'desc' => ['symptOpt.opt_name' => SORT_DESC],
         ];
 
         // enable sorting for the related column
-        //$dataProvider->sort->attributes['symptOpt.id_symptom'] = [
-        //    'asc' => ['symptOpt.id_symptom' => SORT_ASC],
-        //    'desc' => ['symptOpt.id_symptom' => SORT_DESC],
-        //];
+        $dataProvider->sort->attributes['symptOpt.id_symptom'] = [
+            'asc' => ['symptOpt.id_symptom' => SORT_ASC],
+            'desc' => ['symptOpt.id_symptom' => SORT_DESC],
+        ];
 
         $this->load($params);
 

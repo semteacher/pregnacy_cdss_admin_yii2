@@ -57,6 +57,6 @@ class PregnancyCdssDiseases extends \yii\db\ActiveRecord
      */
     public function getFormPregnancycdssDiseasesSymptOpts()
     {
-        return $this->hasMany(FormPregnancycdssDeceasesSymptOpt::className(), ['id_diseases' => 'id']);
+        return $this->hasMany(PregnancyCdssDiseasesSymptOpt::className(), ['id_diseases' => 'id']);
     }
 }
