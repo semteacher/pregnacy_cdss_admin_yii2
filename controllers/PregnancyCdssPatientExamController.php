@@ -166,16 +166,17 @@ class PregnancyCdssPatientExamController extends Controller
                 } else {
                     //single choice symptom
                     $patientChoice = PregnancyCdssSymptoptByPatient::findOne(['id_exam'=>$formsDataObj->id, 'pid'=>$formsDataObj->pid, 'id_symptom'=>$symptomsDataObj->id]);
-                    $patientChoiceName = PregnancyCdssSymptOptions::findOne(['id'=>$patientChoice->id_sympt_opt]);
-                    //TODO: bug! $symptomsDataObj->id did not produce key of array?????
-                    $client_data = array_merge($client_data,[$symptomsDataObj->id=>['symp_id'=>$symptomsDataObj->id,'symp_name'=>$symptomsDataObj->symp_name,'opt_id'=>$patientChoice->id_sympt_opt, 'opt_name'=>$patientChoiceName->opt_name]]);
+                    if ($patientChoice) {
+                        $patientChoiceName = PregnancyCdssSymptOptions::findOne(['id'=>$patientChoice->id_sympt_opt]);
+                        $client_data = array_merge($client_data,[$symptomsDataObj->id=>['symp_id'=>$symptomsDataObj->id,'symp_name'=>$symptomsDataObj->symp_name,'opt_id'=>$patientChoice->id_sympt_opt, 'opt_name'=>$patientChoiceName->opt_name]]);
+                    }
                 }
             }
             $row = array_merge($row, ['client_data'=>$client_data]);
             //ad new row to array
             $submitArray[]= $row;
             //$submitArray[]=['exam_id'=>intval($formsDataObj->id), 'patient_id'=>intval($formsDataObj->pid), 'decease'=>$formsDataObj->id_finaldisease];
-        }
+            }
         }
         if ($submitArray) {
         //convert to json
